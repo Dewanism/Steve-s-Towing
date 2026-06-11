@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 160 160">
+  <!-- Generator: Adobe Illustrator 29.8.3, SVG Export Plug-In . SVG Version: 2.1.1 Build 3)  -->
+  <defs>
+    <style>
+      .st0 {
+        fill: url(#linear-gradient);
+      }
+
+      .st0, .st1, .st2, .st3, .st4, .st5, .st6 {
+        stroke: #000;
+        stroke-miterlimit: 10;
+      }
+
+      .st7 {
+        font-family: Impact, Impact;
+        font-size: 18px;
+      }
+
+      .st1 {
+        fill: url(#linear-gradient5);
+      }
+
+      .st2 {
+        fill: url(#linear-gradient2);
+      }
+
+      .st3 {
+        fill: url(#linear-gradient4);
+      }
+
+      .st4 {
+        fill: url(#linear-gradient3);
+      }
+
+      .st5 {
+        fill: url(#linear-gradient1);
+      }
+
+      .st6 {
+        fill: url(#linear-gradient6);
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="34.99" y1="46.15" x2="34.99" y2="75.8" gradientUnits="userSpaceOnUse">
+      <stop offset=".51" stop-color="#476d97"/>
+      <stop offset=".54" stop-color="#3e5f84"/>
+      <stop offset=".65" stop-color="#283d55"/>
+      <stop offset=".75" stop-color="#162330"/>
+      <stop offset=".85" stop-color="#0a0f15"/>
+      <stop offset=".93" stop-color="#020405"/>
+      <stop offset="1" stop-color="#000"/>
+      <stop offset="1" stop-color="#fff"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient1" x1="52.59" y1="46.75" x2="52.59" y2="75.2" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient2" x1="68.78" y1="46.75" x2="68.78" y2="75.2" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient3" x1="85.27" y1="46.75" x2="85.27" y2="75.2" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient4" x1="102.58" y1="46.75" x2="102.58" y2="75.2" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient5" x1="112.66" y1="46.75" x2="112.66" y2="55.96" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient6" x1="125.01" x2="125.01" xlink:href="#linear-gradient"/>
+  </defs>
+  <g>
+    <path class="st0" d="M42.83,55.36h-6.87v-2.11c0-.98-.09-1.61-.26-1.88s-.47-.4-.88-.4c-.45,0-.78.18-1.01.55s-.34.91-.34,1.65c0,.95.13,1.67.39,2.15.25.48.94,1.06,2.09,1.74,3.29,1.96,5.37,3.56,6.22,4.81s1.28,3.28,1.28,6.06c0,2.03-.24,3.52-.71,4.48s-1.39,1.77-2.75,2.42-2.94.98-4.75.98c-1.98,0-3.67-.38-5.07-1.12s-2.32-1.71-2.75-2.87-.65-2.81-.65-4.94v-1.86h6.87v3.46c0,1.07.1,1.75.29,2.06s.54.46,1.03.46.86-.19,1.1-.58.36-.96.36-1.72c0-1.68-.23-2.77-.69-3.29-.47-.52-1.62-1.38-3.46-2.58-1.84-1.22-3.06-2.1-3.66-2.65s-1.09-1.31-1.49-2.29-.59-2.21-.59-3.73c0-2.18.28-3.77.83-4.78s1.46-1.8,2.7-2.36,2.74-.85,4.5-.85c1.92,0,3.56.31,4.91.93s2.25,1.4,2.69,2.35.66,2.55.66,4.81v1.12Z"/>
+    <path class="st5" d="M60.67,46.75v5.7h-4.4v22.76h-7.4v-22.76h-4.38v-5.7h16.17Z"/>
+    <path class="st2" d="M62.36,46.75h12.34v5.7h-4.94v5.4h4.62v5.41h-4.62v6.26h5.43v5.7h-12.83v-28.46Z"/>
+    <path class="st4" d="M94.92,46.75l-3.77,28.46h-11.24l-4.27-28.46h7.8c.91,7.84,1.55,14.47,1.94,19.9.38-5.48.79-10.35,1.22-14.61l.51-5.29h7.8Z"/>
+    <path class="st3" d="M96.16,46.75h12.34v5.7h-4.94v5.4h4.62v5.41h-4.62v6.26h5.43v5.7h-12.83v-28.46Z"/>
+    <path class="st1" d="M115.04,46.75v2.55c0,1.32-.16,2.42-.47,3.28s-.86,1.59-1.64,2.18-1.66.99-2.65,1.2v-2.06c.7-.39,1.1-.91,1.2-1.58h-1.2v-5.57h4.76Z"/>
+    <path class="st6" d="M132.85,55.36h-6.87v-2.11c0-.98-.09-1.61-.26-1.88s-.47-.4-.88-.4c-.45,0-.78.18-1.01.55s-.34.91-.34,1.65c0,.95.13,1.67.39,2.15.25.48.94,1.06,2.09,1.74,3.29,1.96,5.37,3.56,6.22,4.81s1.28,3.28,1.28,6.06c0,2.03-.24,3.52-.71,4.48s-1.39,1.77-2.75,2.42-2.94.98-4.75.98c-1.98,0-3.67-.38-5.07-1.12s-2.32-1.71-2.75-2.87-.65-2.81-.65-4.94v-1.86h6.87v3.46c0,1.07.1,1.75.29,2.06s.54.46,1.03.46.86-.19,1.1-.58.36-.96.36-1.72c0-1.68-.23-2.77-.69-3.29-.47-.52-1.62-1.38-3.46-2.58-1.84-1.22-3.06-2.1-3.66-2.65s-1.09-1.31-1.49-2.29-.59-2.21-.59-3.73c0-2.18.28-3.77.83-4.78s1.46-1.8,2.7-2.36,2.74-.85,4.5-.85c1.92,0,3.56.31,4.91.93s2.25,1.4,2.69,2.35.66,2.55.66,4.81v1.12Z"/>
+  </g>
+  <text class="st7" transform="translate(50.56 92.19)"><tspan x="0" y="0">Towing</tspan></text>
+</svg>
