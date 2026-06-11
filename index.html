@@ -1,49 +1,32 @@
-﻿<html lang="en">
+﻿<!DOCTYPE html>
+<html lang="en">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Steve's Towing</title>
+        <link rel="stylesheet" href="./src/css/reset.css">
         <link rel="stylesheet" href="./src/css/style.css">
     </head>
     <body>
-        <header class="site-header">
-            <div class="top-row">
-                <a href="#home" class="brand">
-                    <img src="./images/Steves.svg" alt="Steve's Towing logo" class="logo">
-                    <span>Steve's Towing</span>
-                </a>
-                <nav class="main-nav" aria-label="Primary navigation">
-                    <ul class="nav-list">
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#services">Services</a></li>
-                        <li><a href="#reviews">Reviews</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </nav>
+        <nav>
+            <div class="logo">
+                <img src="./images/Steves.svg" alt="Steve's Towing logo" width="100" height="100">
+                <h3>Steve's Towing</h3>
             </div>
-        </header>
+        </nav>
 
-        <main>
-            <section id="home" class="hero">
-                <div class="hero-content">
-                    <p class="eyebrow">24/7 Emergency Towing</p>
-                    <h1>Fast, reliable towing when you need it most.</h1>
-                    <p class="hero-copy">Steve's Towing is ready to help with vehicle recovery, jump starts, lockouts, and roadside assistance across the area. Depend on friendly service and quick response any time of day.</p>
-                    <div class="hero-actions">
-                        <a href="#contact" class="button primary">Get Help Now</a>
-                        <a href="#services" class="button secondary">View Services</a>
-                    </div>
-                    <p class="hero-note">Need immediate support? Call us anytime for towing, winch outs, fuel delivery, and tire changes.</p>
-                </div>
-                <div class="hero-image">
-                    <img src="./images/Steves.svg" alt="Steve's Towing logo">
-                </div>
-            </section>
+        <div class="hamburger">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
 
-            <section id="testimonials" class="testimonials"></section>
-        </main>
-
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a class="nav-cta-button" href="#contact">Contact</a></li>
+        </ul>
         <script src="./src/js/main.js"></script>
     </body>
 </html>
