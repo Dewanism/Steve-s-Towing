@@ -8,6 +8,10 @@
     src: url('../fonts/Roboto-Medium.ttf') format('truetype');
 }
 
+body {
+    color:black
+}
+
 .logo {
     display: flex;
     align-items: center;
