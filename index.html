@@ -7,28 +7,34 @@
         <link rel="stylesheet" href="./css/style.css">
     </head>
     <body>
+        <header role="banner">
         <nav>
             <div class="logo">
                 <img src="img/Steves.svg" alt="Steve's Towing logo" width="250" height="250">
                 <h3>Steve's Towing</h3>
             </div>
-
-
-        <div class="hamburger">
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
-        </div>
-
-        <ul class="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#service-areas">Service Areas</a></li>
-            <li><a href="#reviews">Reviews</a></li>
-            <li><a class="nav-cta-button" href="#contact">Contact</a></li>
-        </ul>
         </nav>
+        </header>
+
+        <nav role="navigation">
+            <div class="hamburger">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#service-areas">Service Areas</a></li>
+                <li><a href="#reviews">Reviews</a></li>
+                <li><a class="nav-cta-button" href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+
+        <main role="main">
+    
         <section id="hero">
             <p class="eyebrow">Broken Down?</p>
             <h2>Don't wait hours for help.</h2>
@@ -110,12 +116,13 @@
         </section>
 
         <section id="testimonials">
-            <h2></h2>
+            <h2>What Our Customers Say</h2>
             <h3>4.6 Google Rating</h3>
             <p> 224+ Verified Reviews</p>
         </section>
+        </main>
 
-        <footer>
+        <footer role="contentinfo">
             <h2 id="payment-methods">Payment Methods</h2>
             <p>We accept all major credit cards, debit cards, and cash payments.</p>
             <img src="payment-icons/pm.svg" alt="Payment Method Icons for Visa, Mastercard, American Express, and Discover" width="400" height="100">
