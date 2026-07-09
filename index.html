@@ -5,134 +5,168 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="Family-owned towing and roadside assistance serving Southwest Florida for over 20 years. Fast, professional service. Call Steve's Towing today.">
         <title>Steve's Towing</title>
+        <link rel="stylesheet" href="./css/reset.css">
         <link rel="stylesheet" href="./css/style.css">
     </head>
     <body>
-        <header role="banner">
-        <nav>
-            <div class="logo">
-                <img src="img/Steves.svg" alt="Steve's Towing logo" width="250" height="250">
-                <h3>Steve's Towing</h3>
+        <header class="site-header" role="banner">
+            <div class="container header-inner">
+                <a class="brand" href="./index.html">
+                    <img src="img/Steves.svg" alt="Steve's Towing logo">
+                </a>
+
+                <nav class="main-nav" role="navigation">
+                    <ul class="nav-links">
+                        <li><a href="#hero">Home</a></li>
+                        <li><a href="#trust">About</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#service-areas">Service Areas</a></li>
+                        <li><a href="#testimonials">Reviews</a></li>
+                        <li><a class="nav-cta-button" href="tel:+19417694187">Call Now</a></li>
+                    </ul>
+                </nav>
             </div>
-        </nav>
         </header>
 
-        <nav role="navigation">
-            <div class="hamburger">
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-            </div>
-
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#service-areas">Service Areas</a></li>
-                <li><a href="#reviews">Reviews</a></li>
-                <li><a class="nav-cta-button" href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-
         <main role="main">
-    
-        <section id="hero">
-            <p class="eyebrow">Broken Down?</p>
-            <h2>Don't wait hours for help.</h2>
-            <p>Our experienced drivers provide quick, professional towing and roadside assistance throughout Southwest Florida.</p>
+            <section id="hero" class="hero">
+                <div class="container hero-content">
+                    <p class="eyebrow">Broken Down?</p>
+                    <h1>Fast, professional towing and roadside help in Southwest Florida.</h1>
+                    <p class="hero-copy">Steve’s Towing has been serving drivers with dependable recovery and roadside service for over 20 years. We arrive quickly, work cleanly, and get you back on the road with confidence.</p>
 
-            <button class="cta-button"><a href="tel:+19417694187">Call Now</a></button>
-            <button class="secondary-button"><a href="#services">Services</a></button>
-        </section>
+                    <div class="hero-actions">
+                        <a class="cta-button" href="tel:+19417694187">Call Now</a>
+                        <a class="secondary-button" href="#services">View Services</a>
+                    </div>
+                </div>
+            </section>
 
-        <section id="trust">
-            <h2>Recognized for Excellence</h2>
-            <ul>
-                <li>Best of Florida Winner: Towing Companies 2022-2025</li>
-                <li>Woman of Towing 2019</li>
-                <li>Business of the Month - Charlotte County Chamber of Commerce 2007</li>
-            </ul>
-            <p> <em>Trusted by drivers throughout Southwest Florida for over 20 years</em></p>
-        </section>
+            <section id="trust" class="section section-light">
+                <div class="container section-grid about-grid">
+                    <div>
+                        <h2>Recognized for excellence and trusted locally</h2>
+                        <p>Family-owned and operated, Steve’s Towing delivers prompt service with a personal touch. We serve Port Charlotte, Punta Gorda, Englewood, North Port, Venice, Rotonda, Arcadia, Fort Myers, and nearby communities.</p>
+                    </div>
+                    <div class="badges">
+                        <span>Best of Florida 2022–2025</span>
+                        <span>Woman of Towing 2019</span>
+                        <span>Charlotte County Chamber Business of the Month 2007</span>
+                    </div>
+                </div>
+            </section>
 
-        <section id="services">
-            <h2>Professional Towing & Roadside Assistance</h2>
-            <p>At Steve’s Towing, we help drivers throughout Southwest Florida with towing, lockouts, jump starts, tire changes, fuel delivery, vehicle transport, and much more. As a Family-owned business, we’re committed to providing dependable service, whenever you need assistance.</p>
-        
-            <div class="services-grid">
-                
-                <article class="service-card">
-                    <h3>Towing</h3>
-                    <p>From local towing to long-distance transport, we handle your vehicle with care and professionalism every step of the way.</p>
-                </article>
+            <section id="services" class="section">
+                <div class="container">
+                    <div class="section-heading">
+                        <h2>Professional towing & roadside assistance</h2>
+                        <p>We offer fast response, experienced drivers, and a wide range of vehicle services for motorists in need.</p>
+                    </div>
 
-                <article class="service-card">
-                    <h3>Lockouts</h3>
-                    <p>Don't let a lockout ruin your day. Our team can help you regain access to your vehicle professionally.</p>
-                </article>
-        
-                <article class="service-card">
-                    <h3>Private Property Towing</h3>
-                    <p>Protect your property with professional towing services for unauthorized, abandoned, or improperly parked vehicles.</p>
-                </article>
+                    <div class="services-grid">
+                        <article class="service-card">
+                            <h3>Towing</h3>
+                            <p>Local and long-distance towing with careful vehicle handling and clear communication.</p>
+                        </article>
+                        <article class="service-card">
+                            <h3>Lockouts</h3>
+                            <p>Quick, non-damaging entry services to get you back inside safely and without delay.</p>
+                        </article>
+                        <article class="service-card">
+                            <h3>Roadside Assistance</h3>
+                            <p>Flat tires, fuel delivery, and emergency jump starts delivered right where you are.</p>
+                        </article>
+                        <article class="service-card">
+                            <h3>Shed & Toolbox Transport</h3>
+                            <p>Secure transport for sheds, toolboxes, containers, and specialty cargo.</p>
+                        </article>
+                        <article class="service-card">
+                            <h3>Private Property Towing</h3>
+                            <p>Professional removal of unauthorized or abandoned vehicles for property managers.</p>
+                        </article>
+                        <article class="service-card">
+                            <h3>Jump Starts</h3>
+                            <p>Battery boosts and on-site support to help you get moving again quickly.</p>
+                        </article>
+                    </div>
+                </div>
+            </section>
 
-                <article class="service-card">
-                    <h3>Shed & Toolbox Transport</h3>
-                    <p>Need equipment, sheds, toolboxes, or containers moved? We provide secure transport for oversized and specialty items.</p>
-                </article>
+            <section id="service-areas" class="section section-light">
+                <div class="container">
+                    <div class="section-heading">
+                        <h2>Serving Southwest Florida</h2>
+                        <p>We’re available across the region to help drivers when they need it most.</p>
+                    </div>
 
-                <article class="service-card">
-                    <h3>Roadside Assistance</h3>
-                    <p>From flat tires to fuel delivery, our roadside assistance team is ready to help when problems happen on the road.</p>
-                </article>
+                    <ul class="areas-grid">
+                        <li>Port Charlotte</li>
+                        <li>Punta Gorda</li>
+                        <li>Englewood</li>
+                        <li>North Port</li>
+                        <li>Venice</li>
+                        <li>Rotonda</li>
+                        <li>Arcadia</li>
+                        <li>Fort Myers</li>
+                    </ul>
 
-                <article class="service-card">
-                    <h3>Jump Starts</h3>
-                    <p>A dead battery doesn't have to stop your day. We'll provide a battery boost to help get your vehicle running again.</p> 
-                </article>
+                    <p class="section-note">Not listed? Call us to confirm whether we can reach your location.</p>
+                </div>
+            </section>
 
-            </div>
-        </section>
-
-        <section id="service-areas">
-            <h2>Serving Southwest Florida</h2>
-            <p>We proudly serve the following areas:</p>
-            <ul>
-                <li>Port Charlotte</li>
-                <li>Punta Gorda</li>
-                <li>Englewood</li>
-                <li>North Port</li>
-                <li>Venice</li>
-                <li>Rotonda</li>
-                <li>Arcadias</li>
-                <li>Fort Myers</li>
-            </ul>
-
-            <p>Don't see your area listed? Contact us to see if we can assist you.</p>
-        </section>
-
-        <section id="trusted-by">
-            <h2>Trusted by the following businesses</h2>
-            <div class="trusted-by-grid"></div>
-        </section>
-
-        <section id="testimonials">
-            <h2>What Our Customers Say</h2>
-            <h3>4.6 Google Rating</h3>
-            <p> 224+ Verified Reviews</p>
-        </section>
+            <section id="testimonials" class="section">
+                <div class="container testimonials-panel">
+                    <div>
+                        <h2>What our customers say</h2>
+                        <p class="testimonial-copy">"Steve's Towing arrived fast, handled my car with care, and made a stressful situation easy. Highly recommended!"</p>
+                    </div>
+                    <div class="testimonial-stats">
+                        <div>
+                            <span>4.6</span>
+                            <p>Google Rating</p>
+                        </div>
+                        <div>
+                            <span>224+</span>
+                            <p>Verified Reviews</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </main>
 
         <footer role="contentinfo">
-            <h2 id="payment-methods">Payment Methods</h2>
-            <p>We accept all major credit cards, debit cards, and cash payments.</p>
-            <img src="payment-icons/pm.svg" alt="Payment Method Icons for Visa, Mastercard, American Express, and Discover" width="400" height="100">
-
-            <h2>Contact Us</h2>
-            <p>For reliable towing and roadside assistance in Southwest Florida, contact Steve's Towing today. We're here to help you get back on the road quickly and safely.</p>
-            <button class="cta-button"><a href="tel:+19417694187">Call Now</a></button>
-            <p><a href="https://www.promontorywebdesigns.com" target="_blank">Promontory Web Designs</a> &copy; 2026</p>
+            <div class="container footer-top">
+                <div class="footer-brand">
+                    <img class="footer-logo" src="img/Steves.svg" alt="Steve's Towing logo">
+                    <p>Reliable towing and vehicle assistance anywhere in Southwest Florida. Call anytime for prompt support.</p>
+                    <a class="cta-button" href="tel:+19417694187">Call Now</a>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links-list">
+                        <li><a href="#hero">Home</a></li>
+                        <li><a href="#trust">About</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#service-areas">Service Areas</a></li>
+                        <li><a href="#testimonials">Reviews</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact Information</h3>
+                    <ul class="footer-contact-list">
+                        <li><span class="footer-contact-icon">⏰</span>24/7 Dispatch</li>
+                        <li><span class="footer-contact-icon">📞</span><a href="tel:+19417694187">941-769-4187</a></li>
+                        <li><span class="footer-contact-icon">📍</span>Port Charlotte, FL</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Steve's Towing</p>
+                <p>Website Designed by <a href="https://www.promontorywebdesigns.com" target="_blank" rel="noopener">Promontory Web Designs</a></p>
+            </div>
         </footer>
-        <script src="./src/js/main.js"></script>
+
+        <script src="./js/main.js"></script>
     </body>
 </html>

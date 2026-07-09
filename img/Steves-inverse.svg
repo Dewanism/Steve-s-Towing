@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <style type="text/css"><![CDATA[
+      image { filter: invert(1) grayscale(1) contrast(1.05) brightness(1.05); }
+    ]]></style>
+  </defs>
+  <image href="Steves.svg" width="160" height="160" x="0" y="0" />
+</svg>
