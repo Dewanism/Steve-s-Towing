@@ -76,7 +76,11 @@
                             <img src="badges/best-of-florida-2024.png" alt="Best of Florida 2024 award" width="150" height="210" loading="lazy" decoding="async">
                         </div>
                         <div class="badges">
-                            <span>Woman of Towing 2019</span>
+                            <button type="button" class="badge-photo" data-lightbox-target="woman-of-towing-modal" aria-haspopup="dialog">
+                                <img class="badge-photo-thumb" src="badges/woman-of-towing-2019.jpg" alt="" width="42" height="56" loading="lazy" decoding="async">
+                                <span>Woman of Towing 2019</span>
+                                <span class="badge-photo-hint" aria-hidden="true">🔍</span>
+                            </button>
                             <span>Charlotte County Chamber Business of the Month 2007</span>
                             <a href="https://powerwoe.com/press-release/p-o-w-e-r-professional-organization-of-women-of-excellence-recognized-honors-the-newest-women-of-empowerment-members-10/" target="_blank" rel="noopener">P.O.W.E.R. (Professional Organization of Women of Excellence Recognized) / JoAnn T. Sorlucco – Transportation</a>
                         </div>
@@ -250,6 +254,14 @@
                 <p>Website Designed by <a href="https://www.promontorywebdesigns.com" target="_blank" rel="noopener">Promontory Web Designs</a></p>
             </div>
         </footer>
+
+        <div class="lightbox" id="woman-of-towing-modal" hidden>
+            <div class="lightbox-backdrop" data-lightbox-close></div>
+            <div class="lightbox-dialog" role="dialog" aria-modal="true" aria-label="Woman of Towing 2019 — Tow Times magazine feature on Joann Sorlucco">
+                <button type="button" class="lightbox-close" data-lightbox-close aria-label="Close">&times;</button>
+                <img src="badges/woman-of-towing-2019.jpg" alt="Tow Times magazine &quot;Woman of Towing&quot; feature on Joann Sorlucco of Steve's Towing, Port Charlotte, Florida, September 2019" loading="lazy" decoding="async">
+            </div>
+        </div>
 
         <script src="./js/main.js" defer></script>
     </body>
