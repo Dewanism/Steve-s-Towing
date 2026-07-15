@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/svg+xml" href="img/Steves.svg">
         <meta name="description" content="Family-owned towing and roadside assistance serving Southwest Florida for over 20 years. Fast, professional service. Call Steve's Towing today.">
         <title>Steve's Towing</title>
         <link rel="stylesheet" href="./css/reset.css">
@@ -12,14 +13,24 @@
         <header class="site-header" role="banner">
             <div class="container header-inner">
                 <a class="brand" href="./index.html">
-                    <img src="img/Steves.svg" alt="Steve's Towing logo">
+                    <img src="img/Steves.svg" alt="Steve's Towing logo" width="116" height="60">
                 </a>
 
                 <nav class="main-nav" role="navigation">
                     <ul class="nav-links">
                         <li><a href="#hero">Home</a></li>
                         <li><a href="#trust">About</a></li>
-                        <li><a href="#services">Services</a></li>
+                        <li class="has-dropdown">
+                            <a href="#services">Services</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="services/1towing.html">Towing</a></li>
+                                <li><a href="services/3lockouts.html">Lockouts</a></li>
+                                <li><a href="services/6roadsideassistance.html">Roadside Assistance</a></li>
+                                <li><a href="services/5shedandtoolbox.html">Shed &amp; Toolbox Transport</a></li>
+                                <li><a href="services/4privatepropertytowing.html">Private Property Towing</a></li>
+                                <li><a href="services/2cashforjunk.html">Cash for Junk Cars</a></li>
+                            </ul>
+                        </li>
                         <li><a href="#service-areas">Service Areas</a></li>
                         <li><a href="#testimonials">Reviews</a></li>
                         <li><a class="nav-cta-button" href="tel:+19417694187">Call Now</a></li>
@@ -31,13 +42,44 @@
         <main role="main">
             <section id="hero" class="hero">
                 <div class="container hero-content">
-                    <p class="eyebrow">Broken Down?</p>
-                    <h1>Fast, professional towing and roadside help in Southwest Florida.</h1>
-                    <p class="hero-copy">Steve’s Towing has been serving drivers with dependable recovery and roadside service for over 20 years. We arrive quickly, work cleanly, and get you back on the road with confidence.</p>
+                    <div class="hero-text">
+                        <p class="eyebrow">24/7 Towing &amp; Roadside Assistance</p>
+                        <h1>Reliable Towing &amp; Roadside Assistance in Southwest Florida</h1>
+                        <p class="hero-copy">Locked out, broken down, or stuck with a flat tire? Steve's Towing provides fast, professional towing and roadside help throughout Port Charlotte, Punta Gorda, and Southwest Florida — day or night.</p>
 
-                    <div class="hero-actions">
-                        <a class="cta-button" href="tel:+19417694187">Call Now</a>
-                        <a class="secondary-button" href="#services">View Services</a>
+                        <div class="hero-actions">
+                            <a class="cta-button" href="tel:+19417694187">Call Now</a>
+                            <a class="secondary-button" href="#services">View Services</a>
+                        </div>
+                    </div>
+                    <div class="hero-media">
+                        <picture>
+                            <source type="image/webp" srcset="img/steves-towing-truck.webp">
+                            <img src="img/steves-towing-truck.jpg" alt="Steve's Towing flatbed truck transporting a classic car in Port Charlotte, FL" height="300" width="500" fetchpriority="high" decoding="async">
+                        </picture>
+                    </div>
+                </div>
+                <svg class="hero-wave" viewBox="0 0 1440 220" preserveAspectRatio="none" aria-hidden="true">
+                    <path fill="#ffffff" d="M0,120 C260,240 480,40 760,90 C1040,140 1220,40 1440,10 L1440,220 L0,220 Z"></path>
+                </svg>
+            </section>
+
+            <section id="awards" class="section section-light awards-section">
+                <div class="container">
+                    <div class="section-heading">
+                        <h2>Award-Winning Service</h2>
+                        <p>Recognized year after year for reliability, professionalism, and dedication to Southwest Florida drivers.</p>
+                    </div>
+                    <div class="awards-content">
+                        <div class="badge-ribbons awards-ribbons">
+                            <img src="badges/best-of-florida-2023.png" alt="Best of Florida 2023 award" width="150" height="210" loading="lazy" decoding="async">
+                            <img src="badges/best-of-florida-2024.png" alt="Best of Florida 2024 award" width="150" height="210" loading="lazy" decoding="async">
+                        </div>
+                        <div class="badges">
+                            <span>Woman of Towing 2019</span>
+                            <span>Charlotte County Chamber Business of the Month 2007</span>
+                            <a href="https://powerwoe.com/press-release/p-o-w-e-r-professional-organization-of-women-of-excellence-recognized-honors-the-newest-women-of-empowerment-members-10/" target="_blank" rel="noopener">P.O.W.E.R. (Professional Organization of Women of Excellence Recognized) / JoAnn T. Sorlucco – Transportation</a>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -47,11 +89,7 @@
                     <div>
                         <h2>Recognized for excellence and trusted locally</h2>
                         <p>Family-owned and operated, Steve’s Towing delivers prompt service with a personal touch. We serve Port Charlotte, Punta Gorda, Englewood, North Port, Venice, Rotonda, Arcadia, Fort Myers, and nearby communities.</p>
-                    </div>
-                    <div class="badges">
-                        <span>Best of Florida 2022–2025</span>
-                        <span>Woman of Towing 2019</span>
-                        <span>Charlotte County Chamber Business of the Month 2007</span>
+                        <p><a class="secondary-button" href="aboutus.html">Our Story</a></p>
                     </div>
                 </div>
             </section>
@@ -65,27 +103,31 @@
 
                     <div class="services-grid">
                         <article class="service-card">
-                            <h3>Towing</h3>
+                            <h3><a href="services/1towing.html">Towing</a></h3>
                             <p>Local and long-distance towing with careful vehicle handling and clear communication.</p>
                         </article>
                         <article class="service-card">
-                            <h3>Lockouts</h3>
+                            <h3><a href="services/3lockouts.html">Lockouts</a></h3>
                             <p>Quick, non-damaging entry services to get you back inside safely and without delay.</p>
                         </article>
                         <article class="service-card">
-                            <h3>Roadside Assistance</h3>
+                            <h3><a href="services/6roadsideassistance.html">Roadside Assistance</a></h3>
                             <p>Flat tires, fuel delivery, and emergency jump starts delivered right where you are.</p>
                         </article>
                         <article class="service-card">
-                            <h3>Shed & Toolbox Transport</h3>
+                            <h3><a href="services/5shedandtoolbox.html">Shed & Toolbox Transport</a></h3>
                             <p>Secure transport for sheds, toolboxes, containers, and specialty cargo.</p>
                         </article>
                         <article class="service-card">
-                            <h3>Private Property Towing</h3>
+                            <h3><a href="services/4privatepropertytowing.html">Private Property Towing</a></h3>
                             <p>Professional removal of unauthorized or abandoned vehicles for property managers.</p>
                         </article>
                         <article class="service-card">
-                            <h3>Jump Starts</h3>
+                            <h3><a href="services/2cashforjunk.html">Cash for Junk Cars</a></h3>
+                            <p>Fair, no-hassle offers for unwanted vehicles in any condition — we handle the pickup.</p>
+                        </article>
+                        <article class="service-card">
+                            <h3><a href="services/6roadsideassistance.html">Jump Starts</a></h3>
                             <p>Battery boosts and on-site support to help you get moving again quickly.</p>
                         </article>
                     </div>
@@ -93,7 +135,7 @@
             </section>
 
             <section id="service-areas" class="section section-light">
-                <div class="container">
+                <div class="container"> 
                     <div class="section-heading">
                         <h2>Serving Southwest Florida</h2>
                         <p>We’re available across the region to help drivers when they need it most.</p>
@@ -132,12 +174,40 @@
                     </div>
                 </div>
             </section>
+
+            <section class="tow-cta-wrap">
+                <div class="container">
+                    <div class="tow-cta">
+                        <svg class="tow-cta-truck" viewBox="0 0 420 180" preserveAspectRatio="xMidYMax meet" aria-hidden="true">
+                            <g fill="rgba(255, 208, 90, 0.16)">
+                                <rect x="40" y="108" width="230" height="16" rx="4"></rect>
+                                <polygon points="16,124 40,124 40,142 16,142"></polygon>
+                                <rect x="222" y="64" width="12" height="48" rx="3"></rect>
+                                <rect x="205" y="58" width="42" height="12" rx="3"></rect>
+                                <path d="M266,58 h58 a12,12 0 0 1 12,12 v42 h-92 v-32 a12,12 0 0 1 12,-12 z"></path>
+                                <path d="M278,58 l18,-28 h30 l10,28 z"></path>
+                                <circle cx="92" cy="142" r="22"></circle>
+                                <circle cx="152" cy="142" r="22"></circle>
+                                <circle cx="332" cy="142" r="22"></circle>
+                            </g>
+                        </svg>
+                        <div class="tow-cta-content">
+                            <h2>Broken down? We're already on the way.</h2>
+                            <p>Call Steve's Towing now for fast, professional towing and roadside assistance anywhere in Southwest Florida — available 24/7.</p>
+                        </div>
+                        <a class="cta-button" href="tel:+19417694187">Call Now</a>
+                    </div>
+                </div>
+                <svg class="tow-cta-wave" viewBox="0 0 1440 220" preserveAspectRatio="none" aria-hidden="true">
+                    <path fill="#ffd05a" d="M0,60 C300,180 600,10 900,70 C1150,120 1300,180 1440,120 L1440,220 L0,220 Z"></path>
+                </svg>
+            </section>
         </main>
 
         <footer role="contentinfo">
             <div class="container footer-top">
                 <div class="footer-brand">
-                    <img class="footer-logo" src="img/Steves.svg" alt="Steve's Towing logo">
+                    <img class="footer-logo" src="img/Steves.svg" alt="Steve's Towing logo" width="116" height="60" loading="lazy" decoding="async">
                     <p>Reliable towing and vehicle assistance anywhere in Southwest Florida. Call anytime for prompt support.</p>
                     <a class="cta-button" href="tel:+19417694187">Call Now</a>
                 </div>
@@ -158,7 +228,21 @@
                         <li><span class="footer-contact-icon">⏰</span>24/7 Dispatch</li>
                         <li><span class="footer-contact-icon">📞</span><a href="tel:+19417694187">941-769-4187</a></li>
                         <li><span class="footer-contact-icon">📍</span>Port Charlotte, FL</li>
+                        <li><span class="footer-contact-icon">✉️</span><a href="mailto:support@stevestowing.us">support@stevestowing.us</a></li>
                     </ul>
+                </div>
+                <div class="footer-payment">
+                    <h3>Payment Methods</h3>
+                    <div class="footer-payment-icons">
+                        <span class="payment-icon"><img src="payment-icons/visa.svg" alt="Visa" width="80" height="26" loading="lazy" decoding="async"></span>
+                        <span class="payment-icon"><img src="payment-icons/mc.svg" alt="Mastercard" width="37" height="26" loading="lazy" decoding="async"></span>
+                        <span class="payment-icon"><img src="payment-icons/amex.svg" alt="American Express" width="26" height="26" loading="lazy" decoding="async"></span>
+                        <span class="payment-icon"><img src="payment-icons/discover.svg" alt="Discover" width="26" height="26" loading="lazy" decoding="async"></span>
+                    </div>
+                </div>
+                <div class="footer-awards badge-ribbons footer-badge-ribbons">
+                    <img src="badges/best-of-florida-2023.png" alt="Best of Florida 2023 award" width="150" height="210" loading="lazy" decoding="async">
+                    <img src="badges/best-of-florida-2024.png" alt="Best of Florida 2024 award" width="150" height="210" loading="lazy" decoding="async">
                 </div>
             </div>
             <div class="footer-bottom">
@@ -167,6 +251,6 @@
             </div>
         </footer>
 
-        <script src="./js/main.js"></script>
+        <script src="./js/main.js" defer></script>
     </body>
 </html>
