@@ -16,8 +16,14 @@
                     <img src="img/Steves.svg" alt="Steve's Towing logo" width="116" height="60">
                 </a>
 
+                <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="main-nav-menu" aria-label="Open menu">
+                    <span class="nav-toggle-bar"></span>
+                    <span class="nav-toggle-bar"></span>
+                    <span class="nav-toggle-bar"></span>
+                </button>
+
                 <nav class="main-nav" role="navigation">
-                    <ul class="nav-links">
+                    <ul class="nav-links" id="main-nav-menu">
                         <li><a href="#hero">Home</a></li>
                         <li><a href="#trust">About</a></li>
                         <li class="has-dropdown">
@@ -79,15 +85,14 @@
                     </div>
                     <div class="awards-content">
                         <div class="badge-ribbons awards-ribbons">
+                            <button type="button" class="badge-photo-ribbon" data-lightbox-target="woman-of-towing-modal" aria-haspopup="dialog" aria-label="View Tow Times magazine &quot;Woman of Towing&quot; feature, 2019">
+                                <img src="badges/woman-of-towing-2019.png" alt="" width="156" height="210" loading="lazy" decoding="async">
+                                <span class="badge-photo-hint" aria-hidden="true">🔍</span>
+                            </button>
                             <img src="badges/best-of-florida-2023.png" alt="Best of Florida 2023 award" width="150" height="210" loading="lazy" decoding="async">
                             <img src="badges/best-of-florida-2024.png" alt="Best of Florida 2024 award" width="150" height="210" loading="lazy" decoding="async">
                         </div>
                         <div class="badges">
-                            <button type="button" class="badge-photo" data-lightbox-target="woman-of-towing-modal" aria-haspopup="dialog">
-                                <img class="badge-photo-thumb" src="badges/woman-of-towing-2019.jpg" alt="" width="42" height="56" loading="lazy" decoding="async">
-                                <span>Woman of Towing 2019</span>
-                                <span class="badge-photo-hint" aria-hidden="true">🔍</span>
-                            </button>
                             <span>Charlotte County Chamber Business of the Month 2007</span>
                             <a href="https://powerwoe.com/press-release/p-o-w-e-r-professional-organization-of-women-of-excellence-recognized-honors-the-newest-women-of-empowerment-members-10/" target="_blank" rel="noopener">P.O.W.E.R. (Professional Organization of Women of Excellence Recognized) / JoAnn T. Sorlucco – Transportation</a>
                         </div>
@@ -135,7 +140,7 @@
                         </article>
                         <article class="service-card">
                             <h3><a href="services/2cashforjunk.html">Cash for Junk Cars</a></h3>
-                            <p>Fair, no-hassle offers for unwanted vehicles in any condition — we handle the pickup.</p>
+                            <p>Fair, no-hassle offers for unwanted vehicles in any condition, and we handle the pickup.</p>
                         </article>
                         <article class="service-card">
                             <h3><a href="services/6roadsideassistance.html">Jump Starts</a></h3>
@@ -153,10 +158,10 @@
                     </div>
 
                     <ul class="areas-grid">
-                        <li>Port Charlotte</li>
-                        <li>Punta Gorda</li>
+                        <li><a href="serviceareas/2portcharlotte.html">Port Charlotte</a></li>
+                        <li><a href="serviceareas/1puntagorda.html">Punta Gorda</a></li>
                         <li>Englewood</li>
-                        <li>North Port</li>
+                        <li><a href="serviceareas/3northport.html">North Port</a></li>
                         <li>Venice</li>
                         <li>Rotonda</li>
                         <li>Arcadia</li>
@@ -275,9 +280,9 @@
 
         <div class="lightbox" id="woman-of-towing-modal" hidden>
             <div class="lightbox-backdrop" data-lightbox-close></div>
-            <div class="lightbox-dialog" role="dialog" aria-modal="true" aria-label="Woman of Towing 2019 — Tow Times magazine feature on Joann Sorlucco">
+            <div class="lightbox-dialog" role="dialog" aria-modal="true" aria-label="Woman of Towing 2019: Tow Times magazine feature on Joann Sorlucco">
                 <button type="button" class="lightbox-close" data-lightbox-close aria-label="Close">&times;</button>
-                <img src="badges/woman-of-towing-2019.jpg" alt="Tow Times magazine &quot;Woman of Towing&quot; feature on Joann Sorlucco of Steve's Towing, Port Charlotte, Florida, September 2019" loading="lazy" decoding="async">
+                <img src="badges/woman-of-towing-2019.png" alt="Tow Times magazine &quot;Woman of Towing&quot; feature on Joann Sorlucco of Steve's Towing, Port Charlotte, Florida, September 2019" loading="lazy" decoding="async">
             </div>
         </div>
 

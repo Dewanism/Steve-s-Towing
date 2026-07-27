@@ -16,8 +16,14 @@
                     <img src="../img/Steves.svg" alt="Steve's Towing logo" width="116" height="60">
                 </a>
 
+                <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="main-nav-menu" aria-label="Open menu">
+                    <span class="nav-toggle-bar"></span>
+                    <span class="nav-toggle-bar"></span>
+                    <span class="nav-toggle-bar"></span>
+                </button>
+
                 <nav class="main-nav" role="navigation">
-                    <ul class="nav-links">
+                    <ul class="nav-links" id="main-nav-menu">
                         <li><a href="../index.html">Home</a></li>
                         <li><a href="../index.html#trust">About</a></li>
                         <li class="has-dropdown">
@@ -48,13 +54,18 @@
 
         <main role="main">
             <section class="page-hero">
-                <div class="container page-hero-content">
-                    <p class="eyebrow">Shed &amp; Toolbox Transport</p>
-                    <h1>Safe &amp; reliable shed and toolbox moving</h1>
-                    <p class="hero-copy">Need to move a shed, jobsite toolbox, or other heavy equipment? Steve's Towing provides dependable transport services for large, oversized items that require specialized equipment and careful handling. Whether you're relocating a storage shed across town or transporting a heavy toolbox to a new job site, our experienced operators will ensure your property is moved safely from pickup to delivery.</p>
-                    <div class="hero-actions">
-                        <a class="cta-button" href="tel:+19417694187">Call Now</a>
-                        <a class="secondary-button" href="../contact.html">Request a Quote</a>
+                <div class="container page-hero-content has-media">
+                    <div class="page-hero-text">
+                        <p class="eyebrow">Shed &amp; Toolbox Transport</p>
+                        <h1>Safe &amp; reliable shed and toolbox moving</h1>
+                        <p class="hero-copy">Need to move a shed, jobsite toolbox, or other heavy equipment? Steve's Towing provides dependable transport services for large, oversized items that require specialized equipment and careful handling. Whether you're relocating a storage shed across town or transporting a heavy toolbox to a new job site, our experienced operators will ensure your property is moved safely from pickup to delivery.</p>
+                        <div class="hero-actions">
+                            <a class="cta-button" href="tel:+19417694187">Call Now</a>
+                            <a class="secondary-button" href="../contact.html">Request a Quote</a>
+                        </div>
+                    </div>
+                    <div class="page-hero-media">
+                        <img src="../img/ShedTowing.jpg" alt="Steve's Towing transporting a storage shed in Southwest Florida" width="1200" height="900" fetchpriority="high" decoding="async">
                     </div>
                 </div>
                 <svg class="page-hero-wave" viewBox="0 0 1440 220" preserveAspectRatio="none" aria-hidden="true">
