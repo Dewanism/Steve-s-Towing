@@ -7,8 +7,18 @@ if (siteHeader) {
         siteHeader.classList.toggle('is-scrolled', window.scrollY > SCROLL_THRESHOLD);
     };
 
+    let scrollTicking = false;
+    const onScroll = () => {
+        if (scrollTicking) return;
+        scrollTicking = true;
+        requestAnimationFrame(() => {
+            updateHeaderState();
+            scrollTicking = false;
+        });
+    };
+
     updateHeaderState();
-    window.addEventListener('scroll', updateHeaderState, { passive: true });
+    window.addEventListener('scroll', onScroll, { passive: true });
 }
 
 const navToggle = document.querySelector('.nav-toggle');
