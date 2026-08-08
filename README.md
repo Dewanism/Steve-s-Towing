@@ -24,6 +24,8 @@ serviceareas/            One page per service area, linked from the nav dropdown
   1puntagorda.html
   2portcharlotte.html
   3northport.html
+  4englewood.html
+  5venice.html
 
 css/style.css            Single shared stylesheet (includes the CSS reset, merged and minified)
 js/main.js               Sticky header, mobile nav, dropdown menus, badge lightbox modal
@@ -54,6 +56,7 @@ Hosted on GitHub Pages, served from `main`. Note: GitHub Pages sets its own `Cac
 
 - **`contact.html`** has no styling, header, nav, or footer, and its `<form>` has no `action`/backend — it's an unfinished stub, not a live contact page.
 - **`serviceareas/1puntagorda.html`, `2portcharlotte.html`, `3northport.html`** each reference a local photo (`punta-gorda.jpg`, `port-charlotte.jpg`, `north-port.jpg`) that was never added to `img/` — those images currently render broken.
+- **`services/6roadsideassistance.html`** has a malformed entry in its Service Areas dropdown — an unclosed `<a href="../serviceareas/6sarasota.html">S` with no matching page — left over from an in-progress edit.
 - **`js/navigation.js`** is dead code from an earlier prototype (targets a `.hamburger` class that no longer exists) and isn't linked from any page; `js/main.js` is what actually runs.
 - **`icons/`** and **`src/`** are empty directories left over from initial scaffolding.
 
