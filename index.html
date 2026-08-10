@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="./css/style.css">
     </head>
     <body>
+        <!-- Header / primary navigation — same markup is repeated on every page -->
         <header class="site-header" role="banner">
             <div class="container header-inner">
                 <a class="brand" href="./index.html">
@@ -54,6 +55,7 @@
         </header>
 
         <main role="main">
+            <!-- Hero: dark navy banner with headline, intro copy, and call-to-actions -->
             <section id="hero" class="hero">
                 <div class="container hero-content">
                     <div class="hero-text">
@@ -75,6 +77,7 @@
                 </svg>
             </section>
 
+            <!-- Awards strip: press feature (opens lightbox) + ribbon badges + text pills -->
             <section id="awards" class="section section-light awards-section">
                 <div class="container">
                     <div class="section-heading">
@@ -98,6 +101,7 @@
                 </div>
             </section>
 
+            <!-- "About" teaser: short trust blurb linking to aboutus.html -->
             <section id="trust" class="section section-light">
                 <div class="container section-grid about-grid">
                     <div class="section-heading">
@@ -108,6 +112,7 @@
                 </div>
             </section>
 
+            <!-- Services overview: card grid linking to each services/*.html page -->
             <section id="services" class="section">
                 <div class="container">
                     <div class="section-heading">
@@ -148,6 +153,7 @@
                 </div>
             </section>
 
+            <!-- Service areas: city list linking out to serviceareas/*.html pages -->
             <section id="service-areas" class="section section-light">
                 <div class="container"> 
                     <div class="section-heading">
@@ -170,6 +176,7 @@
                 </div>
             </section>
 
+            <!-- Testimonials: featured review + Google rating stats -->
             <section id="testimonials" class="section">
                 <div class="container testimonials-panel">
                     <div>
@@ -189,9 +196,11 @@
                 </div>
             </section>
 
+            <!-- Bottom CTA banner: dark panel with a decorative inline-SVG truck -->
             <section class="tow-cta-wrap">
                 <div class="container">
                     <div class="tow-cta">
+                        <!-- Decorative truck silhouette, hidden from screen readers -->
                         <svg class="tow-cta-truck" viewBox="0 0 420 180" preserveAspectRatio="xMidYMax meet" aria-hidden="true">
                             <g fill="rgba(255, 208, 90, 0.16)">
                                 <rect x="40" y="108" width="230" height="16" rx="4"></rect>
@@ -218,6 +227,7 @@
             </section>
         </main>
 
+        <!-- Footer — same markup is repeated on every page -->
         <footer role="contentinfo">
             <div class="container footer-top">
                 <div class="footer-brand">
@@ -276,6 +286,7 @@
             </div>
         </footer>
 
+        <!-- "Woman of Towing" press feature — hidden by default, opened by js/main.js -->
         <div class="lightbox" id="woman-of-towing-modal" hidden>
             <div class="lightbox-backdrop" data-lightbox-close></div>
             <div class="lightbox-dialog" role="dialog" aria-modal="true" aria-label="Woman of Towing 2019: Tow Times magazine feature on Joann Sorlucco">
