@@ -531,7 +531,10 @@ button a,
   gap: 2rem;
 }
 
-.about-grid {
+/* Only go 2-column when there are actually two blocks side by side
+   (the About page). The homepage's #trust section reuses .about-grid
+   with a single block and must stay full-width/centered instead. */
+.about-grid:has(> div + div) {
   grid-template-columns: repeat(2, 1fr);
   align-items: start;
 }
@@ -880,33 +883,19 @@ body.nav-open {
    ---------------------------------------------------------------------- */
 .tow-cta-wrap {
   position: relative;
-  background: var(--surface);
-  padding: 4rem 0 9rem;
+  background: linear-gradient(160deg, #051422 0%, #071a2b 60%, #0f2d47 100%);
+  padding: 4rem 0 6rem;
   overflow: hidden;
 }
 
 .tow-cta {
   position: relative;
+  z-index: 2;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   gap: 2rem;
-  padding: 3rem 3.5rem;
-  border-radius: 28px;
-  overflow: hidden;
-  background: linear-gradient(160deg, #051422 0%, #071a2b 60%, #0f2d47 100%);
-  box-shadow: 0 30px 60px rgba(4, 15, 26, 0.25);
-}
-
-.tow-cta-truck {
-  position: absolute;
-  right: -10px;
-  bottom: -10px;
-  width: 300px;
-  max-width: 45%;
-  height: auto;
-  z-index: 1;
 }
 
 .tow-cta-content {
@@ -943,17 +932,6 @@ body.nav-open {
   z-index: 1;
   display: block;
   line-height: 0;
-}
-
-/* Mobile: hide the truck illustration on the CTA banner */
-@media (max-width:768px) {
-  .tow-cta {
-    padding: 2.5rem;
-  }
-
-  .tow-cta-truck {
-    display: none;
-  }
 }
 
 /* ----------------------------------------------------------------------
