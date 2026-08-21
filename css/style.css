@@ -122,14 +122,18 @@ button a,
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
+  width: min(1120px, calc(100% - 2rem));
   padding: 0.7rem 0.9rem 0.7rem 1.4rem;
   background: #ffffff;
   border-radius: 999px;
   box-shadow: 0 12px 28px rgba(4, 15, 26, 0.22);
-  transition: padding 0.3s ease, box-shadow 0.3s ease;
+  transition: padding 0.3s ease, box-shadow 0.3s ease, width 0.3s ease, border-radius 0.3s ease;
 }
 
+/* Scrolled: the pill widens edge-to-edge and squares off into a rectangle */
 .site-header.is-scrolled .header-inner {
+  width: 100%;
+  border-radius: 0;
   padding: 0.95rem 1.25rem 0.95rem 2rem;
   box-shadow: 0 20px 45px rgba(4, 15, 26, 0.35);
 }
@@ -236,7 +240,7 @@ button a,
     padding: 0.5rem;
     background: #ffffff;
     border: 1px solid var(--border);
-    border-radius: 12px;
+    border-radius: 16px;
     box-shadow: 0 18px 40px rgba(7, 26, 43, 0.12);
     z-index: 30;
   }
@@ -249,8 +253,9 @@ button a,
   .dropdown-menu a {
     display: block;
     padding: 0.6rem 0.75rem;
-    border-radius: 8px;
+    border-radius: 10px;
     white-space: nowrap;
+    transition: background-color 0.15s ease;
   }
 
   .dropdown-menu a:hover,
@@ -269,7 +274,10 @@ button a,
     overflow: hidden;
     max-height: 0;
     gap: 0.15rem;
-    padding-left: 1rem;
+    margin-top: 0.5rem;
+    padding: 0.4rem;
+    background: #ffffff;
+    border-radius: 12px;
     transition: max-height 0.25s ease;
   }
 
@@ -278,14 +286,16 @@ button a,
   }
 
   .dropdown-menu a {
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 8px;
     font-weight: 500;
-    color: rgba(7, 26, 43, 0.75);
+    color: var(--primary);
+    transition: background-color 0.15s ease;
   }
 
   .dropdown-menu a:hover,
   .dropdown-menu a:focus-visible {
-    color: #041826;
+    background-color: var(--accent);
   }
 
   .has-dropdown > a::after {
