@@ -56,20 +56,27 @@
         </header>
 
         <main role="main">
-            <!-- Hero. `hero-cream` scopes the section directly below to a cream background -->
-            <!-- (the wave fill must always match the color of the section beneath it) -->
-            <section class="page-hero hero-cream">
-                <div class="container page-hero-content">
-                    <p class="eyebrow">Roadside Assistance</p>
-                    <h1>Reliable roadside assistance when you need it</h1>
-                    <p class="hero-copy">Vehicle trouble can happen when you least expect it. Whether you have a flat tire, a dead battery, run out of fuel, or experience another roadside issue, Steve's Towing is here to help. Our roadside assistance services are designed to get you moving again whenever possible. If your vehicle can't be safely repaired on-site, we can also provide towing to your preferred destination.</p>
-                    <div class="hero-actions">
-                        <a class="cta-button" href="tel:+19417694187">Call Now</a>
-                        <a class="secondary-button" href="../contact.html">Request Help</a>
+            <!-- Hero. No `hero-cream` here — this page uses a white section below, so the -->
+            <!-- wave fill stays white to match (the wave must always match the section beneath it) -->
+            <section class="page-hero">
+                <div class="container page-hero-content has-media">
+                    <div class="page-hero-text">
+                        <p class="eyebrow">Roadside Assistance</p>
+                        <h1>Reliable roadside assistance when you need it</h1>
+                        <p class="hero-copy">Vehicle trouble can happen when you least expect it. Whether you have a flat tire, a dead battery, run out of fuel, or experience another roadside issue, Steve's Towing is here to help. Our roadside assistance services are designed to get you moving again whenever possible. If your vehicle can't be safely repaired on-site, we can also provide towing to your preferred destination.</p>
+                        <div class="hero-actions">
+                            <a class="cta-button" href="tel:+19417694187">Call Now</a>
+                            <a class="secondary-button" href="../contact.html">Request Help</a>
+                        </div>
+                    </div>
+                    <!-- Two photos layered and rotated via CSS to look like a stacked collage -->
+                    <div class="page-hero-media hero-collage">
+                        <img class="hero-collage-img hero-collage-img-back" src="../img/Flat-tire.webp" alt="Close-up of a flat tire during a roadside tire change call" width="1200" height="900">
+                        <img class="hero-collage-img hero-collage-img-front" src="../img/Fuel.webp" alt="Gas can used for Steve's Towing emergency fuel delivery service" width="1200" height="900">
                     </div>
                 </div>
                 <svg class="page-hero-wave" viewBox="0 0 1440 220" preserveAspectRatio="none" aria-hidden="true">
-                    <path fill="#fdf5e6" d="M0,120 C260,240 480,40 760,90 C1040,140 1220,40 1440,10 L1440,220 L0,220 Z"></path>
+                    <path fill="#ffffff" d="M0,120 C260,240 480,40 760,90 C1040,140 1220,40 1440,10 L1440,220 L0,220 Z"></path>
                 </svg>
             </section>
 
@@ -79,7 +86,7 @@
                     <div class="section-heading">
                         <h2>Our roadside assistance services include</h2>
                     </div>
-                    <ul class="feature-list">
+                    <ul class="feature-list feature-list-contrast">
                         <li>Battery jump starts</li>
                         <li>Flat tire changes</li>
                         <li>Fuel delivery</li>
@@ -87,6 +94,11 @@
                         <li>Minor roadside assistance</li>
                         <li>Towing when needed</li>
                     </ul>
+                    <div class="photo-grid">
+                        <img src="../img/Jumpstart.webp" alt="Portable jump starter connected to a vehicle battery during a roadside call" width="1200" height="900" loading="lazy" decoding="async">
+                        <img src="../img/Jumpstart2.webp" alt="Steve's Towing jump-starting a dead battery with a portable jump starter" width="1200" height="900" loading="lazy" decoding="async">
+                        <img src="../img/Jumpstart3.webp" alt="Jumper cables clamped to a vehicle battery for a roadside jump start" width="1200" height="900" loading="lazy" decoding="async">
+                    </div>
                 </div>
             </section>
 
