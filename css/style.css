@@ -275,14 +275,15 @@ button a,
     max-height: 0;
     gap: 0.15rem;
     margin-top: 0.5rem;
-    padding: 0.4rem;
+    padding: 0 0.4rem;
     background: #ffffff;
     border-radius: 12px;
-    transition: max-height 0.25s ease;
+    transition: max-height 0.25s ease, padding 0.25s ease;
   }
 
   .has-dropdown.dropdown-open .dropdown-menu {
     max-height: 24rem;
+    padding: 0.4rem;
   }
 
   .dropdown-menu a {
@@ -520,6 +521,12 @@ button a,
 }
 
 #trust .section-heading {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.service-area-page .section-heading {
   margin-left: auto;
   margin-right: auto;
   text-align: center;
