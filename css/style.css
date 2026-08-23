@@ -115,6 +115,14 @@ button a,
   top: 0;
   z-index: 30;
   padding: 1.4rem 0;
+  transition: background-color 0.3s ease, padding 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Scrolled: the navy frame drops away and the header itself becomes the white bar */
+.site-header.is-scrolled {
+  background: #ffffff;
+  padding: 0.7rem 0;
+  box-shadow: 0 10px 24px rgba(4, 15, 26, 0.14);
 }
 
 .header-inner {
@@ -123,19 +131,20 @@ button a,
   align-items: center;
   gap: 1rem;
   width: min(1120px, calc(100% - 2rem));
+  margin: 0 auto;
   padding: 0.7rem 0.9rem 0.7rem 1.4rem;
   background: #ffffff;
   border-radius: 999px;
-  box-shadow: 0 12px 28px rgba(4, 15, 26, 0.22);
-  transition: padding 0.3s ease, box-shadow 0.3s ease, width 0.3s ease, border-radius 0.3s ease;
+  box-shadow: 0 8px 20px rgba(4, 15, 26, 0.1);
+  transition: padding 0.3s ease, box-shadow 0.3s ease, border-radius 0.3s ease, background-color 0.3s ease;
 }
 
-/* Scrolled: the pill widens edge-to-edge and squares off into a rectangle */
+/* Scrolled: the pill flattens into the surrounding white bar, same width so the logo doesn't shift */
 .site-header.is-scrolled .header-inner {
-  width: 100%;
   border-radius: 0;
-  padding: 0.95rem 1.25rem 0.95rem 2rem;
-  box-shadow: 0 20px 45px rgba(4, 15, 26, 0.35);
+  padding: 0.4rem 0.9rem 0.4rem 1.4rem;
+  background: transparent;
+  box-shadow: none;
 }
 
 .brand {
@@ -222,7 +231,7 @@ button a,
   list-style: none;
 }
 
-.dropdown-menu a {
+.main-nav .nav-links .dropdown-menu a {
   color: var(--primary);
   font-weight: 600;
 }
