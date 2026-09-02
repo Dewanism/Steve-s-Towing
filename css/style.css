@@ -769,6 +769,7 @@ body.nav-open {
 .badge-ribbons {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 1rem;
 }
 
@@ -1071,15 +1072,31 @@ bvfgh  transform: translateY(-2px);
 }
 
 .footer-awards {
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  gap: 0.85rem;
+  width: 100%;
 }
 
 .footer-badge-ribbons {
   flex-wrap: nowrap;
+  justify-content: center;
 }
 
 .footer-badge-ribbons img {
   height: 100px;
+}
+
+.footer-chamber-badge {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.footer-chamber-badge img {
+  height: 90px;
+  width: auto;
 }
 
 .footer-payment-icons {
