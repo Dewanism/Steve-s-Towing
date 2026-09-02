@@ -1492,6 +1492,42 @@ bvfgh  transform: translateY(-2px);
   transform: rotate(2.5deg);
 }
 
+.about-story-grid {
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  align-items: center;
+  gap: 3rem;
+}
+
+.about-collage {
+  position: relative;
+  aspect-ratio: 4/5;
+}
+
+.about-collage-photo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 86%;
+  height: 90%;
+  object-fit: cover;
+  border-radius: 28px;
+  box-shadow: 0 25px 55px rgba(7, 26, 43, 0.25);
+}
+
+.about-collage-portrait {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  width: 50%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  border-radius: 20px;
+  border: 6px solid var(--surface);
+  box-shadow: 0 20px 45px rgba(7, 26, 43, 0.35);
+}
+
 .hero-collage {
   position: relative;
   aspect-ratio: 1/1;
@@ -1738,6 +1774,16 @@ bvfgh  transform: translateY(-2px);
 
 /* Mobile: single-column feature list & centered CTA banner */
 @media (max-width:768px) {
+  .about-story-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-collage {
+    order: -1;
+    width: min(380px, 100%);
+    margin: 0 auto;
+  }
+
   .feature-list {
     grid-template-columns: 1fr;
   }
