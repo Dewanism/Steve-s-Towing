@@ -202,12 +202,19 @@ button a,
   background-color: var(--primary);
   color: var(--accent);
   font-weight: 700;
+  transition: transform 0.25s ease, box-shadow 0.35s ease, background-color 0.25s ease;
 }
 
+/* Navy pill on yellow: same white glow as the navy section buttons */
 .main-nav .nav-links a.nav-cta-button:hover,
 .main-nav .nav-links a.nav-cta-button:focus-visible {
   background-color: #0d2c47;
   color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow:
+    0 0 0 3px rgba(255, 255, 255, 0.6),
+    0 0 18px 3px rgba(255, 255, 255, 0.55),
+    0 12px 30px rgba(7, 26, 43, 0.3);
 }
 
 .main-nav .nav-links li.has-dropdown {
@@ -436,11 +443,6 @@ button a,
   font-weight: 700;
 }
 
-.hero .secondary-button:hover,
-.hero .secondary-button:focus-visible {
-  background-color: #e9edf2;
-}
-
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
@@ -459,11 +461,6 @@ button a,
   font-weight: 700;
 }
 
-.page-hero .secondary-button:hover,
-.page-hero .secondary-button:focus-visible {
-  background-color: #e9edf2;
-}
-
 /* ----------------------------------------------------------------------
    BUTTONS
    ---------------------------------------------------------------------- */
@@ -475,7 +472,7 @@ button a,
   padding: 0.95rem 1.75rem;
   border-radius: 999px;
   text-align: center;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.25s ease, box-shadow 0.35s ease, background-color 0.25s ease, color 0.25s ease;
 }
 
 .cta-button {
@@ -491,8 +488,8 @@ button a,
   background-color: transparent;
   color: var(--primary);
   border: 2px solid var(--primary);
-  padding: 0.75rem 1.25rem;
-  border-radius: 8px;
+  padding: 0.8rem 1.5rem;
+  border-radius: 999px;
   font-weight: 700;
 }
 
@@ -500,28 +497,83 @@ button a,
 .secondary-button:hover,
 .cta-button:focus-visible,
 .secondary-button:focus-visible {
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+}
+
+/* Glows: a thin same-color ring, a tight bloom, then a wide soft haze */
+.cta-button:hover,
+.cta-button:focus-visible {
+  box-shadow:
+    0 0 0 3px rgba(255, 208, 90, 0.35),
+    0 0 16px 2px rgba(255, 208, 90, 0.6),
+    0 0 44px 8px rgba(255, 208, 90, 0.3);
 }
 
 .secondary-button:hover,
 .secondary-button:focus-visible {
   background-color: var(--primary);
   color: #ffffff;
+  box-shadow:
+    0 0 0 3px rgba(7, 26, 43, 0.18),
+    0 0 16px 2px rgba(7, 26, 43, 0.25),
+    0 0 40px 6px rgba(7, 26, 43, 0.15);
+}
+
+/* Yellow sections: solid navy pill with a sliding arrow so it stands out
+   against the yellow instead of reading as a thin outline */
+.section:not(.section-light) .secondary-button {
+  gap: 0.5rem;
+  background-color: var(--primary);
+  color: #ffffff;
+  box-shadow: 0 10px 24px rgba(7, 26, 43, 0.2);
+}
+
+.section:not(.section-light) .secondary-button::after {
+  content: "\2192";
+  transition: transform 0.2s ease;
+}
+
+.section:not(.section-light) .secondary-button:hover,
+.section:not(.section-light) .secondary-button:focus-visible {
+  background-color: var(--primary);
+  color: #ffffff;
+  box-shadow:
+    0 0 0 3px rgba(255, 255, 255, 0.6),
+    0 0 18px 3px rgba(255, 255, 255, 0.55),
+    0 12px 30px rgba(7, 26, 43, 0.3);
+}
+
+.section:not(.section-light) .secondary-button:hover::after,
+.section:not(.section-light) .secondary-button:focus-visible::after {
+  transform: translateX(4px);
+}
+
+/* White pill on dark heroes: keep navy text on hover (a light-grey fill plus
+   the generic white hover text was unreadable) and add a soft white glow */
+.hero .secondary-button:hover,
+.hero .secondary-button:focus-visible,
+.page-hero .secondary-button:hover,
+.page-hero .secondary-button:focus-visible {
+  background-color: #ffffff;
+  color: var(--primary);
+  box-shadow:
+    0 0 0 3px rgba(255, 255, 255, 0.25),
+    0 0 16px 2px rgba(255, 255, 255, 0.45),
+    0 0 44px 8px rgba(255, 255, 255, 0.2);
 }
 
 /* ----------------------------------------------------------------------
    PAGE SECTIONS: light/dark backgrounds & section headings
    ---------------------------------------------------------------------- */
+/* Sections alternate the logo colors: .section-light is white, plain
+   .section is brand yellow with navy text. */
 .section {
   padding: 4rem 0;
+  background: var(--accent);
 }
 
 .section-light {
   background: var(--surface);
-}
-
-.page-hero.hero-cream+.section-light {
-  background: #fdf5e6;
 }
 
 .section-heading {
@@ -554,6 +606,14 @@ button a,
 .testimonial-copy,
 .section-note {
   color: var(--muted);
+}
+
+/* Muted grey is too low-contrast on yellow, so use a softened navy */
+.section:not(.section-light) .section-heading p,
+.section:not(.section-light) > .container > p,
+.section:not(.section-light) .steps-list p,
+.section:not(.section-light) .section-note {
+  color: rgba(7, 26, 43, 0.82);
 }
 
 /* ----------------------------------------------------------------------
@@ -592,10 +652,10 @@ button a,
   display: inline-flex;
   padding: 0.9rem 1rem;
   border-radius: 999px;
-  background: #fff4c4;
+  background: var(--accent);
   color: var(--text-dark);
   font-size: 0.95rem;
-  border: 1px solid rgba(247, 199, 0, 0.24);
+  border: 1px solid rgba(7, 26, 43, 0.12);
 }
 
 .badges a {
@@ -605,8 +665,8 @@ button a,
 
 .badges a:hover,
 .badges a:focus-visible {
-  background: #ffe98f;
-  box-shadow: 0 6px 16px rgba(230, 178, 0, 0.25);
+  background: #ffc933;
+  box-shadow: 0 6px 16px rgba(143, 109, 0, 0.25);
 }
 
 /* ----------------------------------------------------------------------
@@ -806,23 +866,71 @@ body.nav-open {
 }
 
 .service-card {
+  position: relative;
   background: var(--surface);
   padding: 1.5rem;
   border-radius: 14px;
+  border-top: 3px solid var(--accent);
   box-shadow: 0 12px 28px rgba(7, 26, 43, 0.06);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition: transform 0.25s ease, box-shadow 0.35s ease, background-color 0.25s ease;
 }
 
+/* Stretch the title link over the whole card so any part of it is clickable */
+.service-card h3 a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+}
+
+/* Hover flips the card to navy; the yellow top edge throws a partial glow */
 .service-card:hover,
 .service-card:focus-within {
   transform: translateY(-6px);
-  box-shadow: 0 30px 80px rgba(16, 35, 58, 0.12);
+  background: var(--primary);
+  box-shadow:
+    0 -6px 22px -4px rgba(255, 208, 90, 0.65),
+    0 26px 50px rgba(7, 26, 43, 0.28);
+}
+
+.service-card:hover h3,
+.service-card:focus-within h3 {
+  color: #ffffff;
+}
+
+.service-card:hover p,
+.service-card:focus-within p {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.service-card:hover .service-card-icon,
+.service-card:focus-within .service-card-icon {
+  background: rgba(255, 208, 90, 0.2);
+  box-shadow: 0 0 18px rgba(255, 208, 90, 0.45);
+}
+
+.service-card-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  margin-bottom: 1rem;
+  border-radius: 14px;
+  background: rgba(255, 208, 90, 0.18);
+  font-size: 1.5rem;
+  transition: background-color 0.25s ease, box-shadow 0.35s ease;
 }
 
 .service-card h3 {
   margin-top: 0;
   margin-bottom: 0.85rem;
   font-size: 1.25rem;
+}
+
+.service-card h3,
+.service-card p {
+  transition: color 0.25s ease;
 }
 
 .service-card p {
@@ -847,7 +955,7 @@ body.nav-open {
   border: 1px solid rgba(16, 35, 58, 0.08);
   background: #ffffff;
   color: var(--text-dark);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition: transform 0.25s ease, box-shadow 0.35s ease, background-color 0.25s ease, border-color 0.25s ease;
 }
 
 .areas-grid li:has(a) {
@@ -855,15 +963,32 @@ body.nav-open {
 }
 
 .areas-grid li a {
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
   padding: 1rem 1.1rem;
   font-weight: 600;
 }
 
+.areas-grid li a {
+  transition: color 0.25s ease;
+}
+
+/* Hover flips the pill to navy with white text; a white rim glows along the
+   top edge only, which reads clearly against the yellow section */
 .areas-grid li:has(a):hover,
 .areas-grid li:has(a):focus-within {
   transform: translateY(-4px);
-  box-shadow: 0 20px 50px rgba(16, 35, 58, 0.12);
+  background: var(--primary);
+  border-color: var(--primary);
+  box-shadow:
+    0 -5px 18px -4px rgba(255, 255, 255, 0.85),
+    0 18px 36px rgba(7, 26, 43, 0.3);
+}
+
+.areas-grid li:has(a):hover a,
+.areas-grid li:has(a):focus-within a {
+  color: #ffffff;
 }
 
 .section-note {
@@ -880,6 +1005,13 @@ body.nav-open {
   box-shadow: 0 18px 45px rgba(16, 35, 58, 0.08);
   align-items: center;
   grid-template-columns: 1.6fr 1fr;
+}
+
+.testimonial-stars {
+  margin: 0 0 0.75rem;
+  color: var(--accent-dark);
+  font-size: 1.25rem;
+  letter-spacing: 0.15em;
 }
 
 .testimonial-copy {
@@ -1052,13 +1184,16 @@ footer {
   background-color: var(--primary);
   color: var(--accent);
   align-self: center;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  transition: transform 0.25s ease, box-shadow 0.35s ease;
 }
 
 .footer-brand .cta-button:hover,
-.footer-brand .cta-button:focus {
-bvfgh  transform: translateY(-2px);
-  box-shadow: 0 12px 28px rgba(7, 26, 43, 0.28);
+.footer-brand .cta-button:focus-visible {
+  transform: translateY(-2px);
+  box-shadow:
+    0 0 0 3px rgba(255, 255, 255, 0.6),
+    0 0 18px 3px rgba(255, 255, 255, 0.55),
+    0 12px 30px rgba(7, 26, 43, 0.3);
 }
 
 .footer-contact,
@@ -1363,6 +1498,40 @@ bvfgh  transform: translateY(-2px);
     font-size: clamp(2.25rem, 6vw, 3rem);
   }
 
+  .hero-text {
+    justify-items: center;
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  .hero-actions {
+    justify-content: center;
+  }
+
+  .section-heading {
+    justify-items: center;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .testimonials-panel > div:first-child {
+    text-align: center;
+  }
+
+  .testimonial-stars {
+    justify-content: center;
+  }
+
+  .tow-cta-content {
+    text-align: center;
+  }
+
+  .tow-cta {
+    flex-direction: column;
+    text-align: center;
+  }
+
   .page-hero .page-hero-content.has-media {
     grid-template-columns: 1fr;
     gap: 2rem;
@@ -1652,6 +1821,11 @@ bvfgh  transform: translateY(-2px);
   transform: scale(1.25) rotate(-10deg);
 }
 
+/* An odd number of items leaves one dangling in the last row — span it full width instead */
+.feature-list li:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+}
+
 .steps-list {
   display: grid;
   gap: 1.5rem;
@@ -1678,6 +1852,11 @@ bvfgh  transform: translateY(-2px);
   color: var(--text-dark);
   font-weight: 700;
   font-size: 1.1rem;
+}
+
+.section:not(.section-light) .step-number {
+  background: var(--primary);
+  color: var(--accent);
 }
 
 .steps-list h3 {
