@@ -52,6 +52,8 @@ textarea {
   --surface-alt: #f7fbff;
   --primary: #071a2b;
   --accent: #ffd05a;
+  --steel: #476d97;       /* light blue from the top of the logo lettering */
+  --steel-dark: #3e5f84;
   --accent-dark: #8f6d00;
   --text-dark: #072039;
   --muted: #586873;
@@ -332,7 +334,7 @@ button a,
 .hero {
   position: relative;
   overflow: hidden;
-  padding: 5rem 0 7rem;
+  padding: 6rem 0 8rem;
   background: linear-gradient(160deg, #051422 0%, #071a2b 55%, #0f2d47 100%);
   color: #ffffff;
 }
@@ -568,7 +570,7 @@ button a,
 /* Sections alternate the logo colors: .section-light is white, plain
    .section is brand yellow with navy text. */
 .section {
-  padding: 4rem 0;
+  padding: clamp(4.5rem, 9vw, 7rem) 0;
   background: var(--accent);
 }
 
@@ -578,9 +580,27 @@ button a,
 
 .section-heading {
   display: grid;
-  gap: 0.6rem;
+  gap: 1rem;
   max-width: 720px;
-  margin-bottom: 2.25rem;
+  margin-bottom: clamp(2.5rem, 5vw, 3.5rem);
+}
+
+/* A heading with nothing after it shouldn't add empty space to the section */
+.section-heading:last-child {
+  margin-bottom: 0;
+}
+
+/* Opt-in: center a section's heading, copy and badge pills */
+.section-centered .section-heading {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.section-centered .badges {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .awards-section .section-heading {
@@ -608,12 +628,18 @@ button a,
   color: var(--muted);
 }
 
-/* Muted grey is too low-contrast on yellow, so use a softened navy */
+.section-heading p:has(> .cta-button, > .secondary-button),
+.section .hero-actions {
+  margin-top: 1rem;
+}
+
+/* Muted grey is too low-contrast on yellow, so use solid navy, a touch larger */
 .section:not(.section-light) .section-heading p,
 .section:not(.section-light) > .container > p,
 .section:not(.section-light) .steps-list p,
 .section:not(.section-light) .section-note {
-  color: rgba(7, 26, 43, 0.82);
+  color: var(--text-dark);
+  font-size: 1.05rem;
 }
 
 /* ----------------------------------------------------------------------
@@ -622,7 +648,7 @@ button a,
 .about-grid,
 .testimonials-panel {
   display: grid;
-  gap: 2rem;
+  gap: 2.5rem;
 }
 
 /* Only go 2-column when there are actually two blocks side by side
@@ -635,7 +661,7 @@ button a,
 
 .about-grid>div {
   display: grid;
-  gap: 0.6rem;
+  gap: 1rem;
   align-content: start;
 }
 
@@ -644,7 +670,7 @@ button a,
    ---------------------------------------------------------------------- */
 .badges {
   display: grid;
-  gap: 0.75rem;
+  gap: 1rem;
 }
 
 .badges span,
@@ -746,7 +772,9 @@ button a,
   position: relative;
   max-width: min(90vw, 640px);
   max-height: 90vh;
-  overflow: auto;
+  /* No overflow clipping: the close button hangs off the corner. The image is
+     sized to fit the viewport instead, so the dialog never needs to scroll. */
+  overflow: visible;
   background: #ffffff;
   border-radius: 16px;
   padding: 0.75rem;
@@ -756,32 +784,43 @@ button a,
 
 .lightbox-dialog img {
   display: block;
-  width: 100%;
+  width: auto;
+  max-width: 100%;
   height: auto;
+  max-height: calc(90vh - 1.5rem);
+  margin: 0 auto;
   border-radius: 10px;
 }
 
 .lightbox-close {
   position: absolute;
-  top: -14px;
-  right: -14px;
-  width: 36px;
-  height: 36px;
+  top: -16px;
+  right: -16px;
+  z-index: 1;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
+  border: 2px solid #ffffff;
   background: var(--primary);
   color: #ffffff;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   line-height: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
-  transition: background-color 0.15s ease;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+  transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.3s ease, transform 0.2s ease;
 }
 
 .lightbox-close:hover,
 .lightbox-close:focus-visible {
-  background: #0d2c47;
+  background: var(--accent);
+  color: var(--primary);
+  transform: rotate(90deg);
+  box-shadow:
+    0 0 0 3px rgba(255, 208, 90, 0.35),
+    0 0 18px 2px rgba(255, 208, 90, 0.6);
 }
 
 body.lightbox-open,
@@ -847,7 +886,7 @@ body.nav-open {
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 2.5rem;
+  gap: 3rem;
   text-align: center;
 }
 
@@ -862,17 +901,40 @@ body.nav-open {
 .services-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1.5rem;
+  gap: 2rem;
 }
 
+/* Heading above the card grid: centered, with a short yellow bar under the title */
+.section-heading:has(+ .services-grid) {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.section-heading:has(+ .services-grid) h2::after {
+  content: "";
+  display: block;
+  width: 64px;
+  height: 4px;
+  margin: 1rem auto 0;
+  border-radius: 999px;
+  background: var(--accent);
+}
+
+/* Cards: centered, steel-blue accents at rest; hover flips to steel blue with
+   yellow contrast (top edge, icon tile and glow) */
 .service-card {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
   background: var(--surface);
-  padding: 1.5rem;
+  padding: 2.25rem 1.85rem;
   border-radius: 14px;
-  border-top: 3px solid var(--accent);
-  box-shadow: 0 12px 28px rgba(7, 26, 43, 0.06);
-  transition: transform 0.25s ease, box-shadow 0.35s ease, background-color 0.25s ease;
+  border-top: 4px solid var(--steel);
+  box-shadow: 0 12px 28px rgba(71, 109, 151, 0.12);
+  transition: transform 0.25s ease, box-shadow 0.35s ease, background-color 0.25s ease, border-color 0.25s ease;
 }
 
 /* Stretch the title link over the whole card so any part of it is clickable */
@@ -883,14 +945,15 @@ body.nav-open {
   border-radius: inherit;
 }
 
-/* Hover flips the card to navy; the yellow top edge throws a partial glow */
 .service-card:hover,
 .service-card:focus-within {
   transform: translateY(-6px);
-  background: var(--primary);
+  background-color: var(--steel);
+  border-top-color: var(--accent);
   box-shadow:
-    0 -6px 22px -4px rgba(255, 208, 90, 0.65),
-    0 26px 50px rgba(7, 26, 43, 0.28);
+    0 -6px 22px -4px rgba(255, 208, 90, 0.7),
+    0 0 0 3px rgba(71, 109, 151, 0.2),
+    0 22px 44px -8px rgba(62, 95, 132, 0.55);
 }
 
 .service-card:hover h3,
@@ -900,32 +963,35 @@ body.nav-open {
 
 .service-card:hover p,
 .service-card:focus-within p {
-  color: rgba(255, 255, 255, 0.78);
+  color: rgba(255, 255, 255, 0.92);
 }
 
 .service-card:hover .service-card-icon,
 .service-card:focus-within .service-card-icon {
-  background: rgba(255, 208, 90, 0.2);
-  box-shadow: 0 0 18px rgba(255, 208, 90, 0.45);
+  background-color: var(--accent);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px rgba(255, 208, 90, 0.3), 0 0 22px rgba(255, 208, 90, 0.6);
 }
 
 .service-card-icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 52px;
-  height: 52px;
-  margin-bottom: 1rem;
-  border-radius: 14px;
-  background: rgba(255, 208, 90, 0.18);
-  font-size: 1.5rem;
-  transition: background-color 0.25s ease, box-shadow 0.35s ease;
+  width: 64px;
+  height: 64px;
+  margin-bottom: 1.4rem;
+  border-radius: 50%;
+  background-color: rgba(71, 109, 151, 0.1);
+  border: 2px solid rgba(71, 109, 151, 0.28);
+  font-size: 1.6rem;
+  transition: background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.35s ease;
 }
 
 .service-card h3 {
   margin-top: 0;
   margin-bottom: 0.85rem;
   font-size: 1.25rem;
+  color: var(--steel-dark);
 }
 
 .service-card h3,
@@ -944,7 +1010,7 @@ body.nav-open {
 .areas-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 1rem;
+  gap: 1.25rem;
   padding: 0;
 }
 
@@ -965,25 +1031,27 @@ body.nav-open {
 .areas-grid li a {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
-  padding: 1rem 1.1rem;
-  font-weight: 600;
+  gap: 0.75rem;
+  padding: 1.2rem 1.4rem;
+  font-weight: 700;
+  font-size: 1.05rem;
 }
 
 .areas-grid li a {
   transition: color 0.25s ease;
 }
 
-/* Hover flips the pill to navy with white text; a white rim glows along the
-   top edge only, which reads clearly against the yellow section */
+/* Hover flips the pill to the logo's steel blue with white text; the ring,
+   glow and drop shadow are all tinted the same blue so they read as one */
 .areas-grid li:has(a):hover,
 .areas-grid li:has(a):focus-within {
   transform: translateY(-4px);
-  background: var(--primary);
-  border-color: var(--primary);
+  background: linear-gradient(180deg, var(--steel) 0%, var(--steel-dark) 100%);
+  border-color: var(--steel-dark);
   box-shadow:
-    0 -5px 18px -4px rgba(255, 255, 255, 0.85),
-    0 18px 36px rgba(7, 26, 43, 0.3);
+    0 0 0 3px rgba(71, 109, 151, 0.25),
+    0 0 20px 2px rgba(71, 109, 151, 0.35),
+    0 14px 28px -6px rgba(62, 95, 132, 0.55);
 }
 
 .areas-grid li:has(a):hover a,
@@ -992,7 +1060,7 @@ body.nav-open {
 }
 
 .section-note {
-  margin-top: 1.5rem;
+  margin-top: 2.25rem;
 }
 
 /* ----------------------------------------------------------------------
@@ -1000,7 +1068,7 @@ body.nav-open {
    ---------------------------------------------------------------------- */
 .testimonials-panel {
   background: radial-gradient(circle at top left, rgba(255, 183, 3, 0.15), transparent 40%), var(--surface);
-  padding: 2.5rem;
+  padding: clamp(2rem, 4vw, 3.25rem);
   border-radius: 28px;
   box-shadow: 0 18px 45px rgba(16, 35, 58, 0.08);
   align-items: center;
@@ -1022,12 +1090,12 @@ body.nav-open {
 
 .testimonial-stats {
   display: grid;
-  gap: 1rem;
+  gap: 1.25rem;
 }
 
 .testimonial-stats > div {
   background: #ffffff;
-  padding: 1.5rem;
+  padding: 1.75rem;
   border-radius: 20px;
   border: 1px solid rgba(16, 35, 58, 0.08);
   text-align: center;
@@ -1051,7 +1119,7 @@ body.nav-open {
 .tow-cta-wrap {
   position: relative;
   background: linear-gradient(160deg, #051422 0%, #071a2b 60%, #0f2d47 100%);
-  padding: 4rem 0 6rem;
+  padding: 5.5rem 0 7.5rem;
   overflow: hidden;
 }
 
@@ -1334,8 +1402,12 @@ footer {
     grid-template-columns: 1fr;
   }
 
+  /* Size the two link columns to their text and center the pair, instead of
+     stretching them to the far edges of the stacked footer */
   .footer-links-list {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(2, max-content);
+    justify-content: center;
+    column-gap: 3rem;
   }
 
   .footer-payment-icons {
@@ -1357,12 +1429,8 @@ footer {
   }
 }
 
-/* Small phones: single-column footer links */
+/* Small phones: tighter footer spacing */
 @media (max-width:520px) {
-  .footer-links-list {
-    grid-template-columns: 1fr;
-  }
-
   .footer-top {
     gap: 1.5rem;
   }
@@ -1548,9 +1616,103 @@ footer {
   }
 
   .services-grid,
-  .areas-grid,
   .about-grid {
     grid-template-columns: 1fr;
+  }
+
+  /* Phones: service cards become compact rows (icon left, copy right, chevron
+     on the far right) with the steel accent and yellow glow moved to the left edge */
+  .services-grid {
+    gap: 1rem;
+  }
+
+  .service-card {
+    display: block;
+    text-align: left;
+    padding: 1.25rem 2.75rem 1.25rem 1.25rem;
+    border-top: 0;
+    border-left: 4px solid var(--steel);
+  }
+
+  .service-card:has(.service-card-icon) {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 1rem;
+    align-items: center;
+  }
+
+  .service-card::after {
+    content: "\203A";
+    position: absolute;
+    top: 50%;
+    right: 1.1rem;
+    transform: translateY(-50%);
+    font-size: 1.75rem;
+    line-height: 1;
+    color: var(--steel);
+    transition: color 0.25s ease, transform 0.25s ease;
+  }
+
+  .service-card-icon {
+    grid-row: span 2;
+    width: 52px;
+    height: 52px;
+    margin: 0;
+    font-size: 1.4rem;
+  }
+
+  .service-card h3 {
+    margin-bottom: 0.3rem;
+    font-size: 1.1rem;
+  }
+
+  .service-card p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .service-card:hover,
+  .service-card:focus-within {
+    transform: translateY(-3px);
+    border-left-color: var(--accent);
+    box-shadow:
+      -6px 0 22px -4px rgba(255, 208, 90, 0.7),
+      0 0 0 3px rgba(71, 109, 151, 0.2),
+      0 16px 32px -8px rgba(62, 95, 132, 0.55);
+  }
+
+  .service-card:hover::after,
+  .service-card:focus-within::after {
+    color: var(--accent);
+    transform: translate(3px, -50%);
+  }
+
+  /* Phones: city cards stay two-up as compact tiles, pin centered above the name */
+  .areas-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.85rem;
+  }
+
+  .areas-grid li:has(a) {
+    display: flex;
+  }
+
+  .areas-grid li a {
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.4rem;
+    padding: 1.15rem 0.75rem;
+    text-align: center;
+    line-height: 1.25;
+  }
+
+  .areas-grid li a span {
+    font-size: 1.35rem;
+  }
+
+  .areas-grid + .section-note {
+    text-align: center;
   }
 
   .testimonials-panel {
@@ -1562,12 +1724,32 @@ footer {
     text-align: center;
   }
 
+  /* Phones: the three ribbons share one row, the article sits centered below */
   .awards-ribbons {
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: end;
+    gap: 1.25rem 0.75rem;
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
   }
 
-  .awards-ribbons img {
-    height: 160px;
+  .awards-ribbons > img {
+    width: 100%;
+    height: auto;
+  }
+
+  .awards-ribbons .badge-photo-ribbon {
+    order: 1;
+    grid-column: 1 / -1;
+    justify-self: center;
+    margin-top: 0.75rem;
+  }
+
+  .awards-ribbons .badge-photo-ribbon img {
+    height: 240px;
+    width: auto;
   }
 }
 
@@ -1616,12 +1798,43 @@ footer {
 
 /* Small phones: stack hero buttons */
 @media (max-width:520px) {
+  /* Keep the button pair side by side, sharing the width equally */
   .hero-actions {
-    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 0.75rem;
+    width: 100%;
   }
 
   .hero-actions a {
-    width: 100%;
+    flex: 1 1 0;
+    padding: 0.85rem 0.9rem;
+    font-size: 0.95rem;
+    white-space: nowrap;
+  }
+
+  /* Homepage headline on phones: "Towing &" / "Roadside Assistance", with
+     the size scaled to the screen so the second line never wraps */
+  .hero h1 {
+    font-size: clamp(1.6rem, 8vw, 2.25rem);
+  }
+
+  .phone-line {
+    display: block;
+    white-space: nowrap;
+  }
+
+  /* Trims long headlines on phones. Visually hidden only, so the full text
+     stays in the page for search engines and screen readers. */
+  .hide-on-phone {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
   }
 }
 
@@ -1631,7 +1844,7 @@ footer {
 .page-hero {
   position: relative;
   overflow: hidden;
-  padding: 4.5rem 0 5.5rem;
+  padding: 5.5rem 0 6.5rem;
   background: linear-gradient(160deg, #051422 0%, #071a2b 55%, #0f2d47 100%);
   color: #ffffff;
 }
@@ -1665,12 +1878,12 @@ footer {
   display: grid;
   grid-template-columns: 0.95fr 1.05fr;
   align-items: center;
-  gap: 3rem;
+  gap: clamp(2.5rem, 5vw, 4.5rem);
 }
 
 .about-story-copy {
   display: grid;
-  gap: 1.1rem;
+  gap: 1.25rem;
 }
 
 .about-collage {
@@ -1761,8 +1974,8 @@ footer {
 .photo-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1rem;
-  margin-top: 2rem;
+  gap: 1.25rem;
+  margin-top: 2.75rem;
 }
 
 .photo-grid img {
@@ -1776,7 +1989,7 @@ footer {
 .feature-list {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1rem;
+  gap: 1.25rem;
   padding: 0;
   margin: 0;
 }
@@ -1786,7 +1999,7 @@ footer {
   display: flex;
   align-items: flex-start;
   gap: 0.75rem;
-  padding: 1rem 1.1rem;
+  padding: 1.2rem 1.35rem;
   border-radius: 14px;
   border: 1px solid rgba(16, 35, 58, 0.08);
   background: #ffffff;
@@ -1828,7 +2041,7 @@ footer {
 
 .steps-list {
   display: grid;
-  gap: 1.5rem;
+  gap: 2.25rem;
   padding: 0;
   margin: 0;
 }
@@ -1871,14 +2084,14 @@ footer {
 
 .faq-list {
   display: grid;
-  gap: 1rem;
+  gap: 1.25rem;
 }
 
 .faq-list details {
   background: var(--surface);
   border: 1px solid rgba(16, 35, 58, 0.08);
   border-radius: 14px;
-  padding: 1.1rem 1.25rem;
+  padding: 1.35rem 1.5rem;
 }
 
 .faq-list summary {
@@ -1918,7 +2131,7 @@ footer {
   overflow: hidden;
   background: linear-gradient(180deg, #071a2b 0%, #041826 100%);
   color: #e8f2f8;
-  padding: 3.5rem 0 5.5rem;
+  padding: 5rem 0 7rem;
 }
 
 .cta-banner-inner {
