@@ -1226,13 +1226,14 @@ footer {
 .footer-links-list a {
   color: var(--primary);
   text-decoration: none;
-  transition: color 0.15s ease;
+  transition: color 0.2s ease, text-shadow 0.2s ease;
 }
 
 .footer-links-list a:hover,
 .footer-links-list a:focus {
   color: #041826;
   text-decoration: underline;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.85), 0 0 22px rgba(255, 255, 255, 0.5);
 }
 
 .footer-logo {
@@ -1343,6 +1344,13 @@ footer {
 
 .footer-contact-list a {
   color: #041826;
+  transition: color 0.2s ease, text-shadow 0.2s ease;
+}
+
+.footer-contact-list a:hover,
+.footer-contact-list a:focus {
+  text-decoration: underline;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.85), 0 0 22px rgba(255, 255, 255, 0.5);
 }
 
 .footer-contact-icon {
@@ -1394,6 +1402,13 @@ footer {
   color: var(--primary);
   text-decoration: underline;
   text-underline-offset: 2px;
+  transition: color 0.2s ease, text-shadow 0.2s ease;
+}
+
+.footer-bottom a:hover,
+.footer-bottom a:focus {
+  color: #041826;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.85), 0 0 22px rgba(255, 255, 255, 0.5);
 }
 
 /* Tablet: stack footer columns */
