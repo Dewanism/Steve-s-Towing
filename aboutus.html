@@ -73,7 +73,7 @@
             <section class="section section-light">
                 <div class="container section-grid about-story-grid">
                     <div class="about-collage">
-                        <img class="about-collage-photo" src="img/steves-towing-truck.webp" alt="Steve's Towing flatbed truck" width="1200" height="900" decoding="async">
+                        <img class="about-collage-photo" src="img/steves-towing-fleet.webp" alt="Two Steve's Towing flatbed trucks carrying yellow classic cars" width="1190" height="896" decoding="async">
                         <img class="about-collage-portrait" src="img/Joanna.webp" alt="Joanna, owner of Steve's Towing" width="649" height="930" decoding="async">
                     </div>
                     <div class="about-story-copy">
@@ -103,17 +103,29 @@
                 </div>
             </section>
 
-            <!-- Awards: same badge pill style used on the homepage awards section -->
+            <!-- Awards: same press feature (opens lightbox), ribbons and pills as the homepage -->
             <section class="section section-light section-centered">
                 <div class="container">
                     <div class="section-heading">
                         <h2>Recognized for excellence</h2>
                         <p>Awards and recognition earned through consistent, dependable service to our community.</p>
                     </div>
-                    <div class="badges">
-                        <span>Best of Florida 2022–2025</span>
-                        <span>Woman of Towing 2019</span>
-                        <span>Charlotte County Chamber Business of the Month 2007</span>
+                    <div class="awards-content">
+                        <div class="badge-ribbons awards-ribbons">
+                            <button type="button" class="badge-photo-ribbon" data-lightbox-target="woman-of-towing-modal" aria-haspopup="dialog" aria-label="View Tow Times magazine &quot;Woman of Towing&quot; feature, 2019">
+                                <img src="badges/woman-of-towing-2019.webp" alt="" width="156" height="210" loading="lazy" decoding="async">
+                                <span class="badge-photo-hint" aria-hidden="true">🔍</span>
+                            </button>
+                            <img src="badges/best-of-florida-2023.webp" alt="Best of Florida 2023 award" width="150" height="210" loading="lazy" decoding="async">
+                            <img src="badges/best-of-florida-2024.webp" alt="Best of Florida 2024 award" width="150" height="210" loading="lazy" decoding="async">
+                            <img src="badges/best-of-florida-2026.webp" alt="Best of Florida 2026 award" width="150" height="210" loading="lazy" decoding="async">
+                        </div>
+                        <div class="badges">
+                            <span>Best of Florida 2022–2025</span>
+                            <span>Woman of Towing 2019</span>
+                            <span>Charlotte County Chamber Business of the Month 2007</span>
+                            <a href="https://powerwoe.com/press-release/p-o-w-e-r-professional-organization-of-women-of-excellence-recognized-honors-the-newest-women-of-empowerment-members-10/" target="_blank" rel="noopener">P.O.W.E.R. (Professional Organization of Women of Excellence Recognized) / JoAnn T. Sorlucco – Transportation</a>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -197,6 +209,15 @@
                 <p>Website Designed by <a href="https://www.promontorywebdesigns.com" target="_blank" rel="noopener">Promontory Web Designs</a></p>
             </div>
         </footer>
+
+        <!-- Lightbox for the "Woman of Towing" press feature -->
+        <div class="lightbox" id="woman-of-towing-modal" hidden>
+            <div class="lightbox-backdrop" data-lightbox-close></div>
+            <div class="lightbox-dialog" role="dialog" aria-modal="true" aria-label="Woman of Towing 2019: Tow Times magazine feature on Joann Sorlucco">
+                <button type="button" class="lightbox-close" data-lightbox-close aria-label="Close">&times;</button>
+                <img src="badges/woman-of-towing-2019.webp" alt="Tow Times magazine &quot;Woman of Towing&quot; feature on Joann Sorlucco of Steve's Towing, Port Charlotte, Florida, September 2019" loading="lazy" decoding="async">
+            </div>
+        </div>
 
         <script src="./js/main.js" defer></script>
     </body>
