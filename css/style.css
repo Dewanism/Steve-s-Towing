@@ -54,7 +54,7 @@ textarea {
   --accent: #ffd05a;
   --steel: #476d97;       /* light blue from the top of the logo lettering */
   --steel-dark: #3e5f84;
-  --accent-dark: #8f6d00;
+  --accent-dark: #b8860b;
   --text-dark: #072039;
   --muted: #586873;
   --border: #e6edf3;
@@ -407,8 +407,55 @@ button a,
 
 .section-heading h2,
 .section h2 {
-  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  font-size: clamp(2rem, 4.2vw, 2.9rem);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.035em;
   color: var(--text-dark);
+}
+
+/* Tricolor accent bar under every section title: steel, yellow, navy.
+   The title box shrinks to its text, so the bar spans exactly the title's width.
+   Left-aligned titles sit left; centered contexts set --bar-mx: auto */
+.section-heading h2,
+.about-grid h2,
+.about-story-copy h2 {
+  width: fit-content;
+  max-width: 100%;
+  margin-left: var(--bar-mx, 0);
+  margin-right: var(--bar-mx, 0);
+  text-wrap: balance;
+}
+
+.section-heading h2::after,
+.about-grid h2::after,
+.about-story-copy h2::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 9px;
+  margin-top: 1.25rem;
+  border-radius: 999px;
+  /* Fixed 10px gaps so the segments stay crisp at any title length */
+  background: linear-gradient(90deg,
+    var(--bar-1, var(--steel)) 0 calc(62% - 5px),
+    transparent calc(62% - 5px) calc(62% + 5px),
+    var(--bar-2, var(--accent)) calc(62% + 5px) calc(90% - 5px),
+    transparent calc(90% - 5px) calc(90% + 5px),
+    var(--primary) calc(90% + 5px) 100%);
+}
+
+/* Titles may run wide; intro copy stays at a comfortable reading width */
+.section-heading > p {
+  max-width: 720px;
+  margin-left: var(--bar-mx, 0);
+  margin-right: var(--bar-mx, 0);
+}
+
+/* On yellow sections the yellow segment would vanish: white leads, then steel, then navy */
+.section:not(.section-light) {
+  --bar-1: #ffffff;
+  --bar-2: var(--steel);
 }
 
 .hero h1,
@@ -577,10 +624,31 @@ button a,
   background: var(--surface);
 }
 
+/* Key phrase in a heading: steel-blue text */
+.text-highlight {
+  position: relative;
+  display: inline-block;
+  z-index: 0;
+  white-space: nowrap;
+}
+
+.section h2 .text-highlight {
+  color: var(--steel-dark);
+}
+
+/* On yellow sections: a white marker highlight behind the phrase */
+.section:not(.section-light) h2 .text-highlight {
+  padding: 0.04em 0.28em 0.1em;
+  border-radius: 0.22em;
+  background: #ffffff;
+  box-shadow: 0 10px 24px rgba(7, 26, 43, 0.12);
+}
+
+
 .section-heading {
   display: grid;
   gap: 1.25rem;
-  max-width: 720px;
+  max-width: 900px;
   margin-bottom: clamp(3rem, 6vw, 4.5rem);
 }
 
@@ -594,24 +662,28 @@ button a,
   margin-left: auto;
   margin-right: auto;
   text-align: center;
+  --bar-mx: auto;
 }
 
 .awards-section .section-heading {
   margin-left: auto;
   margin-right: auto;
   text-align: center;
+  --bar-mx: auto;
 }
 
 #trust .section-heading {
   margin-left: auto;
   margin-right: auto;
   text-align: center;
+  --bar-mx: auto;
 }
 
 .service-area-page .section-heading {
   margin-left: auto;
   margin-right: auto;
   text-align: center;
+  --bar-mx: auto;
 }
 
 .section-heading p,
@@ -727,7 +799,7 @@ button a,
 }
 
 .honor-year {
-  color: var(--accent-dark, #8f6d00);
+  color: var(--accent-dark, #b8860b);
   font-size: 0.8rem;
   font-weight: 800;
   letter-spacing: 0.16em;
@@ -1003,10 +1075,10 @@ body.nav-open {
   align-items: center;
   gap: 1rem;
   margin: 1.75rem 0 0.25rem;
-  /* Deep gold: brand yellow itself is too light to read on white */
-  color: var(--accent-dark, #8f6d00);
+  /* Bright warm gold: lighter than the deep gold, still legible on white */
+  color: #d4a017;
   font-size: 0.8rem;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: 0.18em;
   text-transform: uppercase;
 }
@@ -1017,8 +1089,11 @@ body.nav-open {
   flex: 1;
   height: 2px;
   border-radius: 999px;
-  background: currentColor;
-  opacity: 0.35;
+  background: linear-gradient(90deg, transparent, var(--accent));
+}
+
+.award-feature-label::after {
+  background: linear-gradient(90deg, var(--accent), transparent);
 }
 
 .section:not(.section-light) .award-feature-label {
@@ -1054,21 +1129,12 @@ body.nav-open {
   gap: 2.5rem;
 }
 
-/* Heading above the card grid: centered, with a short yellow bar under the title */
+/* Heading above the card grid: centered */
 .section-heading:has(+ .services-grid) {
   margin-left: auto;
   margin-right: auto;
   text-align: center;
-}
-
-.section-heading:has(+ .services-grid) h2::after {
-  content: "";
-  display: block;
-  width: 64px;
-  height: 4px;
-  margin: 1rem auto 0;
-  border-radius: 999px;
-  background: var(--accent);
+  --bar-mx: auto;
 }
 
 /* Cards: centered, steel-blue accents at rest; hover flips to steel blue with
@@ -1281,6 +1347,34 @@ body.nav-open {
   font-size: 1.15rem;
   font-style: italic;
   line-height: 1.8;
+}
+
+/* Review buttons under the quote */
+.section .testimonial-actions {
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+/* Outlined white button on the navy panel; fills white with a soft glow on hover */
+.testimonials-panel .secondary-button {
+  gap: 0.4rem;
+  background-color: transparent;
+  color: #ffffff;
+  border: 2px solid rgba(255, 255, 255, 0.85);
+}
+
+.testimonials-panel .secondary-button:hover,
+.testimonials-panel .secondary-button:focus-visible {
+  background-color: #ffffff;
+  color: var(--primary);
+  box-shadow:
+    0 0 0 3px rgba(255, 255, 255, 0.2),
+    0 0 18px 2px rgba(255, 255, 255, 0.3),
+    0 0 40px 6px rgba(255, 255, 255, 0.12);
+}
+
+.testimonials-panel > div {
+  min-width: 0;
 }
 
 .testimonial-stats {
@@ -1825,6 +1919,7 @@ footer {
     text-align: center;
     margin-left: auto;
     margin-right: auto;
+    --bar-mx: auto;
   }
 
   .testimonials-panel > div:first-child {
@@ -1967,6 +2062,15 @@ footer {
     padding: 1rem 0 0;
     border-left: none;
     border-top: 3px solid var(--steel);
+  }
+
+  .section .testimonial-actions {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .section .testimonial-actions a {
+    flex: 1 1 auto;
   }
 
   .testimonials-panel::after {
@@ -2257,57 +2361,97 @@ footer {
   box-shadow: 0 12px 28px rgba(7, 26, 43, 0.1);
 }
 
+/* Feature lists: open two-column rows separated by thin lines, each led by a
+   navy check badge; a steel-to-yellow underline sweeps in on hover */
 .feature-list {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1.25rem;
+  column-gap: clamp(2rem, 5vw, 4rem);
   padding: 0;
   margin: 0;
+  border-top: 2px solid rgba(7, 26, 43, 0.1);
 }
 
 .feature-list li {
+  position: relative;
   list-style: none;
   display: flex;
-  align-items: flex-start;
-  gap: 0.75rem;
-  padding: 1.2rem 1.35rem;
-  border-radius: 14px;
-  border: 1px solid rgba(16, 35, 58, 0.08);
-  background: #ffffff;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.15rem 0.25rem;
+  border-bottom: 1px solid rgba(7, 26, 43, 0.12);
   color: var(--text-dark);
+  font-size: 1.05rem;
+  font-weight: 600;
 }
 
+/* Odd number of items: a single column reads cleaner than a lopsided pair */
+.feature-list:has(> li:last-child:nth-child(odd)) {
+  grid-template-columns: 1fr;
+  max-width: 760px;
+}
+
+/* Centered sections: keep the single column centered under the heading */
+.section-centered .feature-list,
+.service-area-page .feature-list {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Check badge: navy circle, yellow tick, steel ring */
 .feature-list li::before {
   content: "\2713";
-  color: var(--accent-dark);
-  font-weight: 700;
+  display: grid;
+  place-items: center;
   flex-shrink: 0;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: var(--primary);
+  color: var(--accent);
+  font-size: 0.95rem;
+  font-weight: 800;
+  box-shadow: 0 0 0 3px rgba(71, 109, 151, 0.25);
+  transition: box-shadow 0.25s ease;
 }
 
-/* Higher-contrast variant with a playful hover — opt-in via a second class */
-.feature-list-contrast li {
-  background: rgba(255, 208, 90, 0.14);
-  border-color: rgba(255, 208, 90, 0.45);
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+/* Hover underline, drawn over the divider */
+.feature-list li::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--steel), var(--accent));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
 }
 
-.feature-list-contrast li::before {
-  transition: transform 0.2s ease;
+.feature-list li:hover::after {
+  transform: scaleX(1);
 }
 
-.feature-list-contrast li:hover {
-  background-color: var(--accent);
-  transform: translateY(-4px);
-  box-shadow: 0 16px 32px rgba(143, 109, 0, 0.22);
+.feature-list li:hover::before {
+  box-shadow: 0 0 0 3px rgba(255, 208, 90, 0.45), 0 0 14px rgba(255, 208, 90, 0.45);
 }
 
-.feature-list-contrast li:hover::before {
-  transform: scale(1.25) rotate(-10deg);
+/* On yellow sections: darker dividers, navy-to-white hover line */
+.section:not(.section-light) .feature-list {
+  border-top-color: rgba(7, 26, 43, 0.18);
 }
 
-/* An odd number of items leaves one dangling in the last row — span it full width instead */
-.feature-list li:last-child:nth-child(odd) {
-  grid-column: 1 / -1;
+.section:not(.section-light) .feature-list li {
+  border-bottom-color: rgba(7, 26, 43, 0.18);
+}
+
+.section:not(.section-light) .feature-list li::after {
+  background: linear-gradient(90deg, var(--primary), var(--steel));
+}
+
+.section:not(.section-light) .feature-list li:hover::before {
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.7), 0 0 14px rgba(255, 255, 255, 0.6);
 }
 
 .steps-list {
