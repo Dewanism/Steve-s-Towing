@@ -223,11 +223,22 @@ button a,
   position: relative;
 }
 
+/* Dropdown chevron drawn with borders so it scales with the link text */
 .main-nav .nav-links li.has-dropdown > a::after {
-  content: "\25BE";
-  margin-left: 0.4rem;
-  font-size: 1.1em;
-  vertical-align: -0.05em;
+  content: "";
+  display: inline-block;
+  width: 0.55em;
+  height: 0.55em;
+  margin-left: 0.5rem;
+  border-right: 0.16em solid currentColor;
+  border-bottom: 0.16em solid currentColor;
+  transform: translateY(-0.28em) rotate(45deg);
+  transition: transform 0.2s ease;
+}
+
+.main-nav .nav-links li.has-dropdown:hover > a::after,
+.main-nav .nav-links li.has-dropdown:focus-within > a::after {
+  transform: translateY(0.05em) rotate(225deg);
 }
 
 .dropdown-menu {
@@ -323,8 +334,8 @@ button a,
     transition: transform 0.2s ease;
   }
 
-  .has-dropdown.dropdown-open > a::after {
-    transform: rotate(180deg);
+  .main-nav .nav-links li.has-dropdown.dropdown-open > a::after {
+    transform: translateY(0.05em) rotate(225deg);
   }
 }
 
@@ -334,7 +345,7 @@ button a,
 .hero {
   position: relative;
   overflow: hidden;
-  padding: 7rem 0 9rem;
+  padding: 5rem 0 6.5rem;
   background: linear-gradient(160deg, #051422 0%, #071a2b 55%, #0f2d47 100%);
   color: #ffffff;
 }
@@ -634,6 +645,16 @@ button a,
 
 .section h2 .text-highlight {
   color: var(--steel-dark);
+}
+
+/* Dark heroes: a yellow highlighter behind the phrase, navy text on top */
+.page-hero h1 .text-highlight,
+.hero h1 .text-highlight {
+  padding: 0.02em 0.25em 0.08em;
+  border-radius: 0.2em;
+  background: var(--accent);
+  color: var(--primary);
+  box-shadow: 0 0 22px rgba(255, 208, 90, 0.3);
 }
 
 /* On yellow sections: a white marker highlight behind the phrase */
@@ -1311,56 +1332,102 @@ body.nav-open {
 /* ----------------------------------------------------------------------
    HOMEPAGE: service areas grid
    ---------------------------------------------------------------------- */
+/* One large white panel on the yellow section, like the steps panel */
 .areas-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 1.5rem;
-  padding: 0;
+  column-gap: clamp(1.5rem, 3vw, 2.5rem);
+  padding: clamp(1.75rem, 4vw, 2.75rem) clamp(1.5rem, 4vw, 2.75rem);
+  margin: 0;
+  border-radius: 22px;
+  background: #ffffff;
+  border-top: 5px solid var(--steel);
+  box-shadow: 0 0 0 1px rgba(7, 26, 43, 0.05), 0 22px 48px rgba(7, 26, 43, 0.14);
+}
+
+/* Each city is a row between two lines: number, name, arrow badge */
+.areas-grid li {
+  position: relative;
+  list-style: none;
+  border-top: 2px solid var(--primary);
+  border-bottom: 1px solid rgba(7, 26, 43, 0.12);
+  margin-bottom: -1px;
+}
+
+.areas-grid li a {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 1.35rem 0.15rem;
+  color: var(--primary);
+}
+
+.area-num {
+  color: var(--steel-dark);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.area-name {
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+.area-arrow {
+  display: grid;
+  place-items: center;
+  width: 2.1rem;
+  height: 2.1rem;
+  border-radius: 50%;
+  background: var(--primary);
+  color: var(--accent);
+  font-weight: 800;
+  transition: background-color 0.25s ease, color 0.25s ease, box-shadow 0.3s ease, transform 0.25s ease;
+}
+
+/* Hover: the top rule turns white, the badge flips to white with a glow */
+.areas-grid li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -2px;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.areas-grid li:hover::before,
+.areas-grid li:focus-within::before {
+  transform: scaleX(1);
 }
 
 .areas-grid li {
-  list-style: none;
-  padding: 1rem 1.1rem;
-  border-radius: 14px;
-  border: 1px solid rgba(16, 35, 58, 0.08);
-  background: #ffffff;
-  color: var(--text-dark);
-  transition: transform 0.25s ease, box-shadow 0.35s ease, background-color 0.25s ease, border-color 0.25s ease;
+  transition: background-color 0.25s ease;
 }
 
-.areas-grid li:has(a) {
-  padding: 0;
+.areas-grid li:hover,
+.areas-grid li:focus-within {
+  background: linear-gradient(90deg, rgba(255, 208, 90, 0.22), rgba(255, 208, 90, 0) 85%);
 }
 
-.areas-grid li a {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 1.2rem 1.4rem;
-  font-weight: 700;
-  font-size: 1.05rem;
+.areas-grid li:hover .area-arrow,
+.areas-grid li:focus-within .area-arrow {
+  background: var(--accent);
+  color: var(--primary);
+  transform: translateX(3px);
+  box-shadow: 0 0 0 3px rgba(255, 208, 90, 0.35), 0 0 18px rgba(255, 208, 90, 0.6);
 }
 
-.areas-grid li a {
-  transition: color 0.25s ease;
-}
-
-/* Hover flips the pill to the logo's steel blue with white text; the ring,
-   glow and drop shadow are all tinted the same blue so they read as one */
-.areas-grid li:has(a):hover,
-.areas-grid li:has(a):focus-within {
-  transform: translateY(-4px);
-  background: linear-gradient(180deg, var(--steel) 0%, var(--steel-dark) 100%);
-  border-color: var(--steel-dark);
-  box-shadow:
-    0 0 0 3px rgba(71, 109, 151, 0.25),
-    0 0 20px 2px rgba(71, 109, 151, 0.35),
-    0 14px 28px -6px rgba(62, 95, 132, 0.55);
-}
-
-.areas-grid li:has(a):hover a,
-.areas-grid li:has(a):focus-within a {
-  color: #ffffff;
+.areas-grid li:hover .area-name,
+.areas-grid li:focus-within .area-name {
+  color: var(--accent-dark, #b8860b);
 }
 
 .section-note {
@@ -2114,28 +2181,31 @@ footer {
     transform: translate(3px, -50%);
   }
 
-  /* Phones: city cards stay two-up as compact tiles, pin centered above the name */
+  /* Phones: two columns of compact rows */
   .areas-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0.85rem;
-  }
-
-  .areas-grid li:has(a) {
-    display: flex;
+    column-gap: 1rem;
+    padding: 1.25rem 1.1rem;
   }
 
   .areas-grid li a {
-    flex: 1;
-    flex-direction: column;
-    justify-content: center;
-    gap: 0.4rem;
-    padding: 1.15rem 0.75rem;
-    text-align: center;
-    line-height: 1.25;
+    grid-template-columns: 1fr auto;
+    gap: 0.5rem;
+    padding: 1.1rem 0;
   }
 
-  .areas-grid li a span {
-    font-size: 1.35rem;
+  .area-num {
+    display: none;
+  }
+
+  .area-name {
+    font-size: 1rem;
+  }
+
+  .area-arrow {
+    width: 1.75rem;
+    height: 1.75rem;
+    font-size: 0.85rem;
   }
 
   .areas-grid + .section-note {
@@ -2300,9 +2370,69 @@ footer {
 .page-hero {
   position: relative;
   overflow: hidden;
-  padding: 6.5rem 0 7.5rem;
+  padding: 5rem 0 6.5rem;
   background: linear-gradient(160deg, #051422 0%, #071a2b 55%, #0f2d47 100%);
   color: #ffffff;
+}
+
+/* Every top banner (homepage + inner pages) shares one height on desktop,
+   with its content vertically centered, so pages feel consistent */
+.hero,
+.page-hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: var(--hero-height, 640px);
+  box-sizing: border-box;
+}
+
+.hero > .container,
+.page-hero > .container {
+  width: min(1120px, calc(100% - 3rem));
+}
+
+/* Tablets and phones: one shared minimum height, and photos capped so pages
+   with images don't tower over text-only ones */
+@media (max-width: 960px) {
+  .hero,
+  .page-hero {
+    min-height: 600px;
+  }
+
+  .hero-media,
+  .page-hero-media {
+    width: min(100%, 420px);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-media img {
+    max-height: 230px;
+  }
+
+  .hero-collage {
+    aspect-ratio: 16 / 10;
+  }
+
+  .hero-collage img {
+    width: 58%;
+  }
+}
+
+@media (max-width: 520px) {
+  .hero,
+  .page-hero {
+    min-height: 640px;
+  }
+
+  .hero-media,
+  .page-hero-media {
+    width: min(100%, 320px);
+  }
+
+  .hero-media img {
+    max-height: 190px;
+  }
 }
 
 .page-hero-content {
@@ -2375,7 +2505,7 @@ footer {
 
 .hero-collage {
   position: relative;
-  aspect-ratio: 1/1;
+  aspect-ratio: 5/4;
 }
 
 .hero-collage img {
@@ -2486,6 +2616,42 @@ footer {
   margin-right: auto;
 }
 
+/* Photo beside a checklist: image left, list right */
+.feature-split {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(2rem, 5vw, 4rem);
+}
+
+.feature-split-photo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 420px;
+  object-fit: cover;
+  /* Keep the truck door with the Steve's logo in frame */
+  object-position: 15% center;
+  border-radius: 20px;
+  box-shadow: 0 0 0 6px var(--surface, #fff), 0 0 0 9px rgba(71, 109, 151, 0.35), 0 24px 50px rgba(16, 35, 58, 0.2);
+}
+
+.feature-split .feature-list {
+  max-width: none;
+}
+
+@media (max-width: 960px) {
+  .feature-split {
+    grid-template-columns: 1fr;
+  }
+
+  .feature-split-photo {
+    height: auto;
+    min-height: 0;
+    aspect-ratio: 4 / 3;
+  }
+}
+
 /* Check badge: navy circle, yellow tick, steel ring */
 .feature-list li::before {
   content: "\2713";
@@ -2575,32 +2741,87 @@ footer {
   color: var(--accent);
 }
 
-.section:not(.section-light) .steps-list li {
-  position: relative;
-  display: block;
-  padding: 1.75rem 1.5rem 1.5rem;
-  border-radius: 14px;
+/* Yellow sections: all steps share one white panel. Rows are split by thin
+   lines and a steel connector runs down through the numbered badges */
+.section:not(.section-light) .steps-list {
+  gap: 0;
+  padding: 0.75rem clamp(1.5rem, 4vw, 2.75rem);
+  border-radius: 22px;
   background: #ffffff;
-  border: 1px solid rgba(7, 26, 43, 0.06);
-  box-shadow: 0 10px 24px rgba(7, 26, 43, 0.1);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  border-top: 5px solid var(--steel);
+  box-shadow: 0 0 0 1px rgba(7, 26, 43, 0.05), 0 22px 48px rgba(7, 26, 43, 0.14);
 }
 
-.section:not(.section-light) .steps-list li:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 18px 36px rgba(7, 26, 43, 0.16);
+.section:not(.section-light) .steps-list li {
+  position: relative;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.6rem 0;
+  border-bottom: 1px solid rgba(7, 26, 43, 0.1);
+}
+
+.section:not(.section-light) .steps-list li:last-child {
+  border-bottom: none;
+}
+
+/* Connector line: from badge center to badge center */
+.section:not(.section-light) .steps-list li::before {
+  content: "";
+  position: absolute;
+  left: calc(1.5rem - 1px);
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: rgba(71, 109, 151, 0.35);
+}
+
+.section:not(.section-light) .steps-list li:first-child::before {
+  top: 50%;
+}
+
+.section:not(.section-light) .steps-list li:last-child::before {
+  bottom: 50%;
 }
 
 .section:not(.section-light) .steps-list .step-number {
-  position: absolute;
+  position: relative;
   z-index: 1;
-  top: -1.1rem;
-  left: 1.5rem;
-  box-shadow: 0 4px 10px rgba(7, 26, 43, 0.25), 0 0 0 4px #ffffff;
+  width: 3rem;
+  height: 3rem;
+  font-size: 1.15rem;
+  font-weight: 800;
+  box-shadow: 0 0 0 5px #ffffff, 0 0 0 7px rgba(71, 109, 151, 0.3);
+  transition: box-shadow 0.25s ease;
 }
 
-.section:not(.section-light) .steps-list li > div {
-  margin-top: 0.85rem;
+.section:not(.section-light) .steps-list li:hover .step-number {
+  box-shadow: 0 0 0 5px #ffffff, 0 0 0 7px rgba(255, 208, 90, 0.9), 0 0 18px rgba(255, 208, 90, 0.6);
+}
+
+.section:not(.section-light) .steps-list h3 {
+  transition: color 0.2s ease;
+}
+
+.section:not(.section-light) .steps-list li:hover h3 {
+  /* Deep gold: readable on white, contrasts with the navy badge */
+  color: var(--accent-dark, #b8860b);
+}
+
+/* Hovered row gets a soft yellow wash fading out to the right */
+.section:not(.section-light) .steps-list li {
+  transition: background-color 0.25s ease;
+}
+
+.section:not(.section-light) .steps-list li:hover {
+  background: linear-gradient(90deg, rgba(255, 208, 90, 0.22), rgba(255, 208, 90, 0) 75%);
+}
+
+/* Process / "How it works" headings are centered above the steps panel */
+.section-heading:has(+ .steps-list) {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  --bar-mx: auto;
 }
 
 .steps-list h3 {
@@ -2626,6 +2847,10 @@ footer {
 }
 
 .faq-list summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
   cursor: pointer;
   font-weight: 700;
   list-style: none;
@@ -2639,19 +2864,59 @@ footer {
   content: "";
 }
 
+/* +/- in a navy badge, matching the check and arrow badges */
 .faq-list summary::after {
   content: "+";
-  float: right;
-  color: var(--accent-dark);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 1.9rem;
+  height: 1.9rem;
+  border-radius: 50%;
+  background: var(--primary);
+  color: var(--accent);
+  font-weight: 800;
+  line-height: 1;
+  transition: box-shadow 0.25s ease;
+}
+
+.faq-list summary:hover::after {
+  box-shadow: 0 0 0 3px rgba(255, 208, 90, 0.45), 0 0 14px rgba(255, 208, 90, 0.5);
 }
 
 .faq-list details[open] summary::after {
   content: "\2013";
 }
 
+/* Answer sits below a divider line, led by a short steel-to-yellow accent */
 .faq-list details p {
-  margin: 0.75rem 0 0;
+  position: relative;
+  margin: 1.1rem 0 0;
+  padding-top: 1.1rem;
+  border-top: 1px solid rgba(7, 26, 43, 0.12);
   color: var(--muted);
+}
+
+.faq-list details p::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: 0;
+  width: 72px;
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--steel) 0 50%, var(--accent) 50% 100%);
+}
+
+/* Only the first answer paragraph gets the divider */
+.faq-list details p + p {
+  margin-top: 0.75rem;
+  padding-top: 0;
+  border-top: none;
+}
+
+.faq-list details p + p::before {
+  content: none;
 }
 
 /* ----------------------------------------------------------------------
