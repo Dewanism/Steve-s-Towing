@@ -749,6 +749,94 @@ button a,
   max-width: 620px;
 }
 
+/* ----------------------------------------------------------------------
+   AWARD TIMELINE: tricolor line, a year pill per award, card hanging below.
+   Desktop runs left to right; phones switch to a vertical line on the left
+   ---------------------------------------------------------------------- */
+.honors-timeline {
+  position: relative;
+  padding-top: 4.25rem;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.honors-timeline::before {
+  content: "";
+  position: absolute;
+  top: 1.15rem;
+  left: 0;
+  right: 0;
+  height: 4px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--steel) 0 calc(55% - 4px), transparent calc(55% - 4px) calc(55% + 4px), var(--accent) calc(55% + 4px) calc(85% - 4px), transparent calc(85% - 4px) calc(85% + 4px), var(--primary) calc(85% + 4px));
+}
+
+/* Year pill sitting on the line */
+.honors-timeline .honor-year {
+  position: absolute;
+  top: -4.25rem;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  background: var(--primary);
+  color: var(--accent);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  white-space: nowrap;
+  box-shadow: 0 0 0 4px var(--surface, #fff), 0 6px 14px rgba(7, 26, 43, 0.2);
+}
+
+/* Short connector from the pill down to the card */
+.honors-timeline .honor::before {
+  content: "";
+  position: absolute;
+  top: -2.05rem;
+  left: 50%;
+  width: 2px;
+  height: 2.05rem;
+  transform: translateX(-50%);
+  background: rgba(71, 109, 151, 0.45);
+}
+
+@media (max-width: 768px) {
+  .honors-timeline {
+    grid-template-columns: 1fr;
+    gap: 2.75rem;
+    padding: 0 0 0 2.25rem;
+  }
+
+  .honors-timeline::before {
+    top: 0.5rem;
+    bottom: 0.5rem;
+    left: 0.55rem;
+    right: auto;
+    width: 4px;
+    height: auto;
+    background: linear-gradient(180deg, var(--steel) 0 calc(55% - 4px), transparent calc(55% - 4px) calc(55% + 4px), var(--accent) calc(55% + 4px) calc(85% - 4px), transparent calc(85% - 4px) calc(85% + 4px), var(--primary) calc(85% + 4px));
+  }
+
+  /* Year pill sits on top of each card */
+  .honors-timeline .honor {
+    padding-top: 2.6rem;
+  }
+
+  .honors-timeline .honor-year {
+    top: -0.95rem;
+  }
+
+  /* Dot on the line, level with the pill */
+  .honors-timeline .honor::before {
+    top: -0.45rem;
+    left: -1.7rem;
+    width: 14px;
+    height: 14px;
+    transform: none;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 3px var(--primary);
+  }
+}
+
 .honor > a {
   color: inherit;
   text-decoration: none;
