@@ -1,29 +1,252 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us</title>
-</head>
-<body>
-    <!--
-        Unfinished stub: no header/nav/footer/stylesheet, and the form
-        below has no `action` or backend to submit to. See README.md
-        "Known issues" — this page isn't linked as a real contact page yet.
-    -->
-    <form>
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required><br><br>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/svg+xml" href="img/stevesfavicon.svg">
+        <meta name="description" content="Contact Steve's Towing in Port Charlotte, FL. Call dispatch at 941-769-4187 for towing, lockouts, and roadside help, or get directions to our impound lot on Janice Ave.">
+        <title>Contact Us | Steve's Towing</title>
+        <link rel="stylesheet" href="./css/style.css">
+    </head>
+    <body>
+        <!-- Header / primary navigation — same markup is repeated on every page -->
+        <header class="site-header" role="banner">
+            <div class="container header-inner">
+                <a class="brand" href="./index.html">
+                    <img src="img/Steves.svg" alt="Steve's Towing logo" width="116" height="60">
+                </a>
 
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required><br><br>
+                <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="main-nav-menu" aria-label="Open menu">
+                    <span class="nav-toggle-bar"></span>
+                    <span class="nav-toggle-bar"></span>
+                    <span class="nav-toggle-bar"></span>
+                </button>
 
-        <label for="phone">Phone Number:</label>
-        <input type="tel" id="phone" name="phone"><br><br>
-        <label for="message">Message:</label><br>
-        <textarea id="message" name="message" rows="5" cols="30" required></textarea><br><br>
+                <nav class="main-nav" role="navigation">
+                    <ul class="nav-links" id="main-nav-menu">
+                        <li><a href="./index.html">Home</a></li>
+                        <li><a href="./aboutus.html">About</a></li>
+                        <li class="has-dropdown">
+                            <a href="./services.html">Services</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="services/1towing.html">Towing</a></li>
+                                <li><a href="services/3lockouts.html">Lockouts</a></li>
+                                <li><a href="services/6roadsideassistance.html">Roadside Assistance</a></li>
+                                <li><a href="services/5shedandtoolbox.html">Shed &amp; Toolbox Transport</a></li>
+                                <li><a href="services/4privatepropertytowing.html">Private Property Towing</a></li>
+                                <li><a href="services/2cashforjunk.html">Cash for Junk Cars</a></li>
+                                <li><a href="services/7businessaccounts.html">Business Accounts</a></li>
+                            </ul>
+                        </li>
+                        <li class="has-dropdown">
+                            <a href="./index.html#service-areas">Service Areas</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="serviceareas/1puntagorda.html">Punta Gorda</a></li>
+                                <li><a href="serviceareas/2portcharlotte.html">Port Charlotte</a></li>
+                                <li><a href="serviceareas/3northport.html">North Port</a></li>
+                                <li><a href="serviceareas/4englewood.html">Englewood</a></li>
+                                <li><a href="serviceareas/5venice.html">Venice</a></li>
+                                <li><a href="serviceareas/6rotondawest.html">Rotonda West</a></li>
+                                <li><a href="serviceareas/7arcadia.html">Arcadia</a></li>
+                                <li><a href="serviceareas/8fortmyers.html">Fort Myers</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="./index.html#testimonials">Reviews</a></li>
+                        <li><a class="nav-cta-button" href="tel:+19417694187">Call Now</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
 
-        <input type="submit" value="Submit">    
-    </form>
-</body>
+        <main role="main">
+            <!-- Hero: compact navy banner with the dispatch line front and centre -->
+            <section class="page-hero page-hero-compact">
+                <div class="container page-hero-content">
+                    <p class="eyebrow">Contact Us</p>
+                    <h1>Need a tow? <span class="text-highlight">We’re one call away</span></h1>
+                    <p>Call our dispatch line for the fastest help. Tell us where you are, what you’re driving, and what happened, and we’ll get a truck headed your way.</p>
+                    <div class="hero-actions">
+                        <a class="cta-button" href="tel:+19417694187">Call 941-769-4187</a>
+                        <a class="secondary-button" href="mailto:support@stevestowing.us">Email Us</a>
+                    </div>
+                </div>
+                <svg class="page-hero-wave" viewBox="0 0 1440 220" preserveAspectRatio="none" aria-hidden="true">
+                    <path fill="#ffffff" d="M0,120 C260,240 480,40 760,90 C1040,140 1220,40 1440,10 L1440,220 L0,220 Z"></path>
+                </svg>
+            </section>
+
+            <!-- Ways to reach us: same card style as the services grid; each whole card is clickable -->
+            <section class="section section-light">
+                <div class="container">
+                    <div class="section-heading">
+                        <h2>How to reach us</h2>
+                        <p>Whether you’re stranded on the roadside or picking up a vehicle from our lot, here’s how to get in touch.</p>
+                    </div>
+                    <div class="services-grid">
+                        <article class="service-card">
+                            <span class="service-card-icon"><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"/></svg></span>
+                            <h3><a href="tel:+19417694187">Call Dispatch</a></h3>
+                            <p><strong class="nowrap">941-769-4187</strong><br>The fastest way to get help, for towing, lockouts, and roadside assistance.</p>
+                        </article>
+                        <article class="service-card">
+                            <span class="service-card-icon"><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></span>
+                            <h3><a href="mailto:support@stevestowing.us">Email Us</a></h3>
+                            <p><strong>support@stevestowing.us</strong><br>For quotes, billing, and anything that isn’t an emergency.</p>
+                        </article>
+                        <article class="service-card">
+                            <span class="service-card-icon"><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg></span>
+                            <h3><a href="https://www.google.com/maps/search/?api=1&amp;query=23423+Janice+Ave+Port+Charlotte+FL+33980" target="_blank" rel="noopener">Impound &amp; Office</a></h3>
+                            <p><strong>23423 Janice Ave., Lot D<br>Port Charlotte, FL 33980</strong><br>Vehicle pickup and storage. Tap for directions.</p>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Directions to the impound lot (from the original site), as numbered steps -->
+            <section id="directions" class="section section-centered">
+                <div class="container">
+                    <div class="section-heading">
+                        <h2>Directions to our impound lot</h2>
+                        <p>Coming to pick up your vehicle? Here’s the easiest route from I-75.</p>
+                    </div>
+                    <ol class="steps-list">
+                        <li>
+                            <span class="step-number">1</span>
+                            <div>
+                                <h3>Take I-75 to Exit 170</h3>
+                                <p>Exit onto Kings Highway and head toward Harbor View Road.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="step-number">2</span>
+                            <div>
+                                <h3>Turn left onto Harbor View Road</h3>
+                                <p>Continue about ½ to ¾ of a mile.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="step-number">3</span>
+                            <div>
+                                <h3>Turn left onto Whidden Boulevard</h3>
+                                <p>Look for the Circle K on the corner.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="step-number">4</span>
+                            <div>
+                                <h3>Turn right onto Janice Avenue</h3>
+                                <p>At the end of Whidden Boulevard. Our impound and storage lot is on the right, just before the curve.</p>
+                            </div>
+                        </li>
+                    </ol>
+                    <p class="business-accounts-action"><a class="secondary-button" href="https://www.google.com/maps/search/?api=1&amp;query=23423+Janice+Ave+Port+Charlotte+FL+33980" target="_blank" rel="noopener">Open in Google Maps</a></p>
+                </div>
+            </section>
+
+            <!-- Business accounts pointer -->
+            <section class="section section-light section-centered">
+                <div class="container">
+                    <div class="section-heading">
+                        <h2>Opening a business account?</h2>
+                        <p>Dealerships, repair shops, property managers, and fleets can be billed monthly. Download the account application, then fax it to our accounts department at <strong class="nowrap">(941) 624-4167</strong>.</p>
+                        <p><a class="secondary-button" href="services/7businessaccounts.html">Learn About Business Accounts</a></p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Bottom CTA banner -->
+            <section class="cta-banner">
+                <div class="container cta-banner-inner">
+                    <div>
+                        <h2>Stuck right now?</h2>
+                        <p>Don’t wait on an email. Call Steve’s Towing and we’ll get help on the way.</p>
+                    </div>
+                    <a class="cta-button" href="tel:+19417694187">Call Now</a>
+                </div>
+                <svg class="cta-banner-wave" viewBox="0 0 1440 220" preserveAspectRatio="none" aria-hidden="true">
+                    <path fill="#ffd05a" d="M0,60 C300,180 600,10 900,70 C1150,120 1300,180 1440,120 L1440,220 L0,220 Z"></path>
+                </svg>
+            </section>
+        </main>
+
+        <!-- Footer — same markup is repeated on every page -->
+        <!-- Mobile-only sticky call button; js/main.js hides it over the footer -->
+        <a class="mobile-call-bar" href="tel:+19417694187"><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"/></svg><span>Call Now</span><span class="mobile-call-number">941-769-4187</span></a>
+
+        <footer role="contentinfo">
+            <div class="container footer-top">
+                <div class="footer-brand">
+                    <img class="footer-logo" src="img/Steves.svg" alt="Steve's Towing logo" width="116" height="60" loading="lazy" decoding="async">
+                    <p>Reliable towing and vehicle assistance anywhere in Southwest Florida. Call today for friendly, dependable support.</p>
+                    <p class="footer-motto">“Let us hook you up, let’s not meet by accident.”</p>
+                    <a class="cta-button" href="tel:+19417694187">Call Now</a>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links-list">
+                        <li><a href="./index.html">Home</a></li>
+                        <li><a href="./aboutus.html">About</a></li>
+                        <li><a href="./services.html">Services</a></li>
+                        <li><a href="./index.html#service-areas">Service Areas</a></li>
+                        <li><a href="./index.html#testimonials">Reviews</a></li>
+                        <li><a href="services/7businessaccounts.html">Business Accounts</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact</h3>
+                    <ul class="footer-contact-list">
+                        <li><span class="footer-contact-icon"><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"/></svg></span><a href="tel:+19417694187">941-769-4187</a></li>
+                        <li><span class="footer-contact-icon"><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg></span>Port Charlotte, FL</li>
+                        <li><span class="footer-contact-icon"><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></span><a href="mailto:support@stevestowing.us">support@stevestowing.us</a></li>
+                    </ul>
+                    <h3 class="footer-subhead">We accept</h3>
+                    <div class="footer-payment-icons">
+                        <span class="payment-icon"><img src="payment-icons/visa.svg" alt="Visa" width="80" height="26" loading="lazy" decoding="async"></span>
+                        <span class="payment-icon"><img src="payment-icons/mastercard.svg" alt="Mastercard" width="33" height="26" loading="lazy" decoding="async"></span>
+                        <span class="payment-icon"><img src="payment-icons/amex.svg" alt="American Express" width="26" height="26" loading="lazy" decoding="async"></span>
+                        <span class="payment-icon"><img src="payment-icons/discover.svg" alt="Discover" width="26" height="26" loading="lazy" decoding="async"></span>
+                    </div>
+                </div>
+                <div class="footer-hours">
+                    <h3>Hours</h3>
+                    <ul class="footer-hours-list">
+                        <li><span>Monday</span><span>8AM–12AM</span></li>
+                        <li><span>Tuesday</span><span>8AM–12AM</span></li>
+                        <li><span>Wednesday</span><span>8AM–12AM</span></li>
+                        <li><span>Thursday</span><span>8AM–12AM</span></li>
+                        <li><span>Friday</span><span>8AM–6PM</span></li>
+                        <li><span>Saturday</span><span>8AM–12AM</span></li>
+                        <li><span>Sunday</span><span>8AM–12AM</span></li>
+                    </ul>
+                </div>
+                <div class="footer-awards">
+                    <h3>Awards</h3>
+                    <div class="footer-awards-ribbons">
+                        <img src="badges/best-of-florida-2023.webp" alt="Best of Florida 2023 award" width="150" height="210" loading="lazy" decoding="async">
+                        <img src="badges/best-of-florida-2024.webp" alt="Best of Florida 2024 award" width="150" height="210" loading="lazy" decoding="async">
+                        <img src="badges/best-of-florida-2026.webp" alt="Best of Florida 2026 award" width="150" height="210" loading="lazy" decoding="async">
+                    </div>
+                    <div class="footer-awards-chamber">
+                        <img src="badges/CCCC.webp" alt="Charlotte County Chamber of Commerce member" width="150" height="150" loading="lazy" decoding="async">
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Steve's Towing</p>
+                <p>Website Designed by <a href="https://www.promontorywebdesigns.com" target="_blank" rel="noopener">Promontory Web Designs</a></p>
+            </div>
+        </footer>
+
+        <!-- Lightbox for the "Woman of Towing" press feature -->
+        <div class="lightbox" id="woman-of-towing-modal" hidden>
+            <div class="lightbox-backdrop" data-lightbox-close></div>
+            <div class="lightbox-dialog" role="dialog" aria-modal="true" aria-label="Woman of Towing 2019: Tow Times magazine feature on Joann Sorlucco">
+                <button type="button" class="lightbox-close" data-lightbox-close aria-label="Close">&times;</button>
+                <img src="badges/woman-of-towing-2019.webp" width="763" height="1025" alt="Tow Times magazine &quot;Woman of Towing&quot; feature on Joann Sorlucco of Steve's Towing, Port Charlotte, Florida, September 2019" loading="lazy" decoding="async">
+            </div>
+        </div>
+
+        <script src="./js/main.js" defer></script>
+    </body>
 </html>

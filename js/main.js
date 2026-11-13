@@ -169,3 +169,52 @@ if (mobileCallBar && callBarBlockers.length) {
     window.addEventListener('scroll', onCallBarScroll, { passive: true });
     window.addEventListener('resize', onCallBarScroll, { passive: true });
 }
+
+// ---------------------------------------------------------------------------
+// Wrapped section headings: shrink each one to its longest line so the
+// coloured bar underneath matches the text instead of the full column width
+// ---------------------------------------------------------------------------
+const barHeadings = [...document.querySelectorAll('.section-heading h2, .about-story-copy h2')];
+if (barHeadings.length) {
+    const fitHeading = (h) => {
+        h.style.width = '';
+        // Boxes for every piece of the heading: plain text, plus whole
+        // highlight spans (their padding counts toward the line width)
+        const rects = [];
+        for (const node of h.childNodes) {
+            if (node.nodeType === Node.TEXT_NODE) {
+                const range = document.createRange();
+                range.selectNodeContents(node);
+                rects.push(...range.getClientRects());
+            } else if (node.nodeType === Node.ELEMENT_NODE) {
+                rects.push(...node.getClientRects());
+            }
+        }
+        // Group into visual lines: boxes whose vertical centres share a line
+        const lines = [];
+        for (const r of rects) {
+            if (!r.width) continue;
+            const mid = (r.top + r.bottom) / 2;
+            const line = lines.find((l) => mid > l.top && mid < l.bottom);
+            if (line) {
+                line.left = Math.min(line.left, r.left);
+                line.right = Math.max(line.right, r.right);
+                line.top = Math.min(line.top, r.top);
+                line.bottom = Math.max(line.bottom, r.bottom);
+            } else {
+                lines.push({ left: r.left, right: r.right, top: r.top, bottom: r.bottom });
+            }
+        }
+        if (lines.length < 2) return; // single-line headings already fit their text
+        const widest = Math.max(...lines.map((l) => l.right - l.left));
+        h.style.width = `${Math.ceil(widest) + 4}px`;
+    };
+    const fitAll = () => barHeadings.forEach(fitHeading);
+    let fitTimer;
+    window.addEventListener('resize', () => {
+        clearTimeout(fitTimer);
+        fitTimer = setTimeout(fitAll, 120);
+    });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitAll);
+    fitAll();
+}

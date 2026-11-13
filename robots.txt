@@ -1,0 +1,5 @@
+# Steve's Towing: all public pages may be crawled
+User-agent: *
+Allow: /
+
+Sitemap: https://stevestowing.us/sitemap.xml
