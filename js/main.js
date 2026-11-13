@@ -133,3 +133,39 @@ if (lightboxTriggers.length) {
         if (e.key === 'Escape' && activeModal) closeModal();
     });
 }
+
+// ---------------------------------------------------------------------
+// Sticky mobile "Call Now" button: stays out of the way while the page
+// banner (which has its own Call Now button) or the footer (its own call
+// button and phone number) is on screen, so it never covers either.
+// CSS only shows it below 768px.
+// ---------------------------------------------------------------------
+const mobileCallBar = document.querySelector('.mobile-call-bar');
+const callBarBlockers = [...document.querySelectorAll('.hero, .page-hero, footer')];
+
+if (mobileCallBar && callBarBlockers.length) {
+    // A blocker counts as "on screen" once it reaches into the bottom 80px
+    // band where the button sits, or anywhere above it.
+    const updateCallBar = () => {
+        const limit = window.innerHeight - 80;
+        const blocked = callBarBlockers.some((el) => {
+            const r = el.getBoundingClientRect();
+            return r.bottom > 0 && r.top < limit;
+        });
+        mobileCallBar.classList.toggle('is-hidden', blocked);
+    };
+
+    let callBarTicking = false;
+    const onCallBarScroll = () => {
+        if (callBarTicking) return;
+        callBarTicking = true;
+        requestAnimationFrame(() => {
+            updateCallBar();
+            callBarTicking = false;
+        });
+    };
+
+    updateCallBar();
+    window.addEventListener('scroll', onCallBarScroll, { passive: true });
+    window.addEventListener('resize', onCallBarScroll, { passive: true });
+}

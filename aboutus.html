@@ -59,10 +59,10 @@
 
         <main role="main">
             <!-- Hero: simple navy banner with the page title -->
-            <section class="page-hero">
+            <section class="page-hero page-hero-compact">
                 <div class="container page-hero-content">
                     <p class="eyebrow">About Us</p>
-                    <h1><span class="text-highlight">Family-owned</span>, locally trusted, built on hard work</h1>
+                    <h1><span class="nowrap"><span class="text-highlight">Family-owned</span>,</span> locally trusted, built on hard work</h1>
                 </div>
                 <svg class="page-hero-wave" viewBox="0 0 1440 220" preserveAspectRatio="none" aria-hidden="true">
                     <path fill="#ffffff" d="M0,120 C260,240 480,40 760,90 C1040,140 1220,40 1440,10 L1440,220 L0,220 Z"></path>
@@ -73,7 +73,7 @@
             <section class="section section-light">
                 <div class="container section-grid about-story-grid">
                     <div class="about-collage">
-                        <img class="about-collage-photo" src="img/steves-towing-fleet.webp" alt="Two Steve's Towing flatbed trucks carrying yellow classic cars" width="1190" height="896" decoding="async">
+                        <img class="about-collage-photo" src="img/steves-towing-fleet-about.webp" alt="Two Steve's Towing flatbed trucks carrying yellow classic cars" width="1190" height="676" decoding="async">
                         <img class="about-collage-portrait" src="img/Joanna.webp" alt="Joanna, owner of Steve's Towing" width="649" height="930" decoding="async">
                     </div>
                     <div class="about-story-copy">
@@ -104,7 +104,7 @@
             </section>
 
             <!-- Awards: same press feature (opens lightbox), ribbons and pills as the homepage -->
-            <section class="section section-light section-centered">
+            <section class="section section-light section-centered section-major">
                 <div class="container">
                     <div class="section-heading">
                         <h2>Recognized for excellence</h2>
@@ -112,7 +112,7 @@
                     </div>
                     <div class="awards-content">
                         <div class="badge-ribbons awards-ribbons">
-                            <p class="award-feature-label">As featured in Tow Times</p>
+                            <p class="award-feature-label"><span>As featured in Tow Times</span></p>
                             <button type="button" class="badge-photo-ribbon" data-lightbox-target="woman-of-towing-modal" aria-haspopup="dialog" aria-label="View Tow Times magazine &quot;Woman of Towing&quot; feature, 2019">
                                 <img src="badges/woman-of-towing-2019.webp" alt="" width="156" height="210" loading="lazy" decoding="async">
                                 <span class="badge-photo-hint" aria-hidden="true">🔍</span>
@@ -148,11 +148,15 @@
         </main>
 
         <!-- Footer — same markup is repeated on every page -->
+        <!-- Mobile-only sticky call button; js/main.js hides it over the footer -->
+        <a class="mobile-call-bar" href="tel:+19417694187"><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"/></svg><span>Call Now</span><span class="mobile-call-number">941-769-4187</span></a>
+
         <footer role="contentinfo">
             <div class="container footer-top">
                 <div class="footer-brand">
                     <img class="footer-logo" src="img/Steves.svg" alt="Steve's Towing logo" width="116" height="60" loading="lazy" decoding="async">
                     <p>Reliable towing and vehicle assistance anywhere in Southwest Florida. Call today for friendly, dependable support.</p>
+                    <p class="footer-motto">“Let us hook you up, let’s not meet by accident.”</p>
                     <a class="cta-button" href="tel:+19417694187">Call Now</a>
                 </div>
                 <div class="footer-links">
@@ -167,15 +171,22 @@
                     </ul>
                 </div>
                 <div class="footer-contact">
-                    <h3>Contact Information</h3>
+                    <h3>Contact</h3>
                     <ul class="footer-contact-list">
-                        <li><span class="footer-contact-icon">📞</span><a href="tel:+19417694187">941-769-4187</a></li>
-                        <li><span class="footer-contact-icon">📍</span>Port Charlotte, FL</li>
-                        <li><span class="footer-contact-icon">✉️</span><a href="mailto:support@stevestowing.us">support@stevestowing.us</a></li>
+                        <li><span class="footer-contact-icon"><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"/></svg></span><a href="tel:+19417694187">941-769-4187</a></li>
+                        <li><span class="footer-contact-icon"><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg></span>Port Charlotte, FL</li>
+                        <li><span class="footer-contact-icon"><svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></span><a href="mailto:support@stevestowing.us">support@stevestowing.us</a></li>
                     </ul>
+                    <h3 class="footer-subhead">We accept</h3>
+                    <div class="footer-payment-icons">
+                        <span class="payment-icon"><img src="payment-icons/visa.svg" alt="Visa" width="80" height="26" loading="lazy" decoding="async"></span>
+                        <span class="payment-icon"><img src="payment-icons/mastercard.svg" alt="Mastercard" width="33" height="26" loading="lazy" decoding="async"></span>
+                        <span class="payment-icon"><img src="payment-icons/amex.svg" alt="American Express" width="26" height="26" loading="lazy" decoding="async"></span>
+                        <span class="payment-icon"><img src="payment-icons/discover.svg" alt="Discover" width="26" height="26" loading="lazy" decoding="async"></span>
+                    </div>
                 </div>
                 <div class="footer-hours">
-                    <h3>Hours of Operation</h3>
+                    <h3>Hours</h3>
                     <ul class="footer-hours-list">
                         <li><span>Monday</span><span>8AM–12AM</span></li>
                         <li><span>Tuesday</span><span>8AM–12AM</span></li>
@@ -186,22 +197,14 @@
                         <li><span>Sunday</span><span>8AM–12AM</span></li>
                     </ul>
                 </div>
-                <div class="footer-payment">
-                    <h3>Payment Methods</h3>
-                    <div class="footer-payment-icons">
-                        <span class="payment-icon"><img src="payment-icons/visa.svg" alt="Visa" width="80" height="26" loading="lazy" decoding="async"></span>
-                        <span class="payment-icon"><img src="payment-icons/mastercard.svg" alt="Mastercard" width="33" height="26" loading="lazy" decoding="async"></span>
-                        <span class="payment-icon"><img src="payment-icons/amex.svg" alt="American Express" width="26" height="26" loading="lazy" decoding="async"></span>
-                        <span class="payment-icon"><img src="payment-icons/discover.svg" alt="Discover" width="26" height="26" loading="lazy" decoding="async"></span>
-                    </div>
-                </div>
                 <div class="footer-awards">
-                    <div class="badge-ribbons footer-badge-ribbons">
+                    <h3>Awards</h3>
+                    <div class="footer-awards-ribbons">
                         <img src="badges/best-of-florida-2023.webp" alt="Best of Florida 2023 award" width="150" height="210" loading="lazy" decoding="async">
                         <img src="badges/best-of-florida-2024.webp" alt="Best of Florida 2024 award" width="150" height="210" loading="lazy" decoding="async">
                         <img src="badges/best-of-florida-2026.webp" alt="Best of Florida 2026 award" width="150" height="210" loading="lazy" decoding="async">
                     </div>
-                    <div class="footer-chamber-badge">
+                    <div class="footer-awards-chamber">
                         <img src="badges/CCCC.webp" alt="Charlotte County Chamber of Commerce member" width="150" height="150" loading="lazy" decoding="async">
                     </div>
                 </div>
@@ -217,7 +220,7 @@
             <div class="lightbox-backdrop" data-lightbox-close></div>
             <div class="lightbox-dialog" role="dialog" aria-modal="true" aria-label="Woman of Towing 2019: Tow Times magazine feature on Joann Sorlucco">
                 <button type="button" class="lightbox-close" data-lightbox-close aria-label="Close">&times;</button>
-                <img src="badges/woman-of-towing-2019.webp" alt="Tow Times magazine &quot;Woman of Towing&quot; feature on Joann Sorlucco of Steve's Towing, Port Charlotte, Florida, September 2019" loading="lazy" decoding="async">
+                <img src="badges/woman-of-towing-2019.webp" width="763" height="1025" alt="Tow Times magazine &quot;Woman of Towing&quot; feature on Joann Sorlucco of Steve's Towing, Port Charlotte, Florida, September 2019" loading="lazy" decoding="async">
             </div>
         </div>
 

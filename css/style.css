@@ -54,7 +54,10 @@ textarea {
   --accent: #ffd05a;
   --steel: #476d97;       /* light blue from the top of the logo lettering */
   --steel-dark: #3e5f84;
-  --accent-dark: #b8860b;
+  --accent-dark: #b8860b;  /* decorative gold: lines, icons (3:1 non-text) */
+  --gold-text: #986f00;    /* gold for small text on white: 4.5:1 (WCAG AA) */
+  --radius-card: 20px;     /* cards, photos, panels */
+  --focus-ring: 3px solid var(--steel-dark);
   --text-dark: #072039;
   --muted: #586873;
   --border: #e6edf3;
@@ -438,16 +441,31 @@ button a,
   text-wrap: balance;
 }
 
+/* Secondary sections: a short single-colour bar under the title */
 .section-heading h2::after,
 .about-grid h2::after,
 .about-story-copy h2::after {
   content: "";
   display: block;
+  width: 56px;
+  height: 5px;
+  margin-top: 1.1rem;
+  margin-left: var(--bar-mx, 0);
+  margin-right: var(--bar-mx, 0);
+  border-radius: 999px;
+  background: var(--bar-simple, var(--steel));
+}
+
+/* Major sections keep the signature tricolor bar, spanning the title:
+   the first section after each page banner, the About story, and any
+   section marked .section-major. Fixed 10px gaps keep segments crisp. */
+.hero + .section .section-heading h2::after,
+.page-hero + .section .section-heading h2::after,
+.section-major .section-heading h2::after,
+.about-story-copy h2::after {
   width: 100%;
   height: 9px;
   margin-top: 1.25rem;
-  border-radius: 999px;
-  /* Fixed 10px gaps so the segments stay crisp at any title length */
   background: linear-gradient(90deg,
     var(--bar-1, var(--steel)) 0 calc(62% - 5px),
     transparent calc(62% - 5px) calc(62% + 5px),
@@ -467,6 +485,7 @@ button a,
 .section:not(.section-light) {
   --bar-1: #ffffff;
   --bar-2: var(--steel);
+  --bar-simple: var(--primary);
 }
 
 .hero h1,
@@ -670,6 +689,11 @@ button a,
   display: grid;
   gap: 1.25rem;
   max-width: 900px;
+  /* Site-wide: section titles, bars and intros are centered */
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  --bar-mx: auto;
   margin-bottom: clamp(3rem, 6vw, 4.5rem);
 }
 
@@ -908,7 +932,7 @@ button a,
 }
 
 .honor-year {
-  color: var(--accent-dark, #b8860b);
+  color: var(--gold-text);
   font-size: 0.8rem;
   font-weight: 800;
   letter-spacing: 0.16em;
@@ -1184,12 +1208,19 @@ body.nav-open {
   align-items: center;
   gap: 1rem;
   margin: 1.75rem 0 0.25rem;
-  /* Bright warm gold: lighter than the deep gold, still legible on white */
-  color: #d4a017;
+  /* Gold text sits on a navy pill so it stays bright and still passes contrast */
+  color: var(--accent);
   font-size: 0.8rem;
   font-weight: 800;
   letter-spacing: 0.18em;
   text-transform: uppercase;
+}
+
+.award-feature-label span {
+  padding: 0.45rem 1rem;
+  border-radius: 999px;
+  background: var(--primary);
+  white-space: nowrap;
 }
 
 .award-feature-label::before,
@@ -1206,7 +1237,7 @@ body.nav-open {
 }
 
 .section:not(.section-light) .award-feature-label {
-  color: var(--primary);
+  color: var(--accent);
 }
 
 .awards-ribbons .badge-photo-ribbon {
@@ -1256,10 +1287,19 @@ body.nav-open {
   text-align: center;
   background: var(--surface);
   padding: 2.25rem 1.85rem;
-  border-radius: 14px;
+  border-radius: var(--radius-card);
   border-top: 4px solid var(--steel);
   box-shadow: 0 12px 28px rgba(71, 109, 151, 0.12);
   transition: transform 0.25s ease, box-shadow 0.35s ease, background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.service-card:has(a:focus-visible) {
+  outline: var(--focus-ring);
+  outline-offset: 4px;
+}
+
+.service-card h3 a:focus-visible {
+  outline: none;
 }
 
 /* Stretch the title link over the whole card so any part of it is clickable */
@@ -1293,6 +1333,7 @@ body.nav-open {
 
 .service-card:hover .service-card-icon,
 .service-card:focus-within .service-card-icon {
+  color: var(--primary);
   background-color: var(--accent);
   border-color: var(--accent);
   box-shadow: 0 0 0 4px rgba(255, 208, 90, 0.3), 0 0 22px rgba(255, 208, 90, 0.6);
@@ -1308,14 +1349,21 @@ body.nav-open {
   border-radius: 50%;
   background-color: rgba(71, 109, 151, 0.1);
   border: 2px solid rgba(71, 109, 151, 0.28);
-  font-size: 1.6rem;
-  transition: background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.35s ease;
+  color: var(--steel-dark);
+  transition: background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.35s ease, color 0.25s ease;
+}
+
+/* One icon size and stroke for every card */
+.service-card-icon svg {
+  width: 28px;
+  height: 28px;
+  stroke-width: 1.75;
 }
 
 .service-card h3 {
   margin-top: 0;
   margin-bottom: 0.85rem;
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   color: var(--steel-dark);
 }
 
@@ -1339,7 +1387,7 @@ body.nav-open {
   column-gap: clamp(1.5rem, 3vw, 2.5rem);
   padding: clamp(1.75rem, 4vw, 2.75rem) clamp(1.5rem, 4vw, 2.75rem);
   margin: 0;
-  border-radius: 22px;
+  border-radius: var(--radius-card);
   background: #ffffff;
   border-top: 5px solid var(--steel);
   box-shadow: 0 0 0 1px rgba(7, 26, 43, 0.05), 0 22px 48px rgba(7, 26, 43, 0.14);
@@ -1427,11 +1475,12 @@ body.nav-open {
 
 .areas-grid li:hover .area-name,
 .areas-grid li:focus-within .area-name {
-  color: var(--accent-dark, #b8860b);
+  color: var(--gold-text);
 }
 
 .section-note {
   margin-top: 2.25rem;
+  text-align: center;
 }
 
 /* ----------------------------------------------------------------------
@@ -1502,6 +1551,141 @@ body.nav-open {
   font-size: 1.15rem;
   font-style: italic;
   line-height: 1.8;
+}
+
+/* The quote is a blockquote; reset its default indent */
+blockquote.testimonial-copy {
+  margin: 0;
+}
+
+blockquote.testimonial-copy p {
+  margin: 0;
+  color: inherit;
+}
+
+/* Real Google reviews, 2-3 cards under the panel. Hidden while empty
+   (the template inside is an HTML comment, which :empty ignores) */
+.review-cards {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0 0;
+  padding: 0;
+}
+
+.review-cards:empty {
+  display: none;
+}
+
+.review-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1.75rem 1.5rem;
+  background: var(--surface);
+  border-radius: var(--radius-card);
+  border-top: 4px solid var(--steel);
+  box-shadow: 0 12px 28px rgba(71, 109, 151, 0.12);
+}
+
+.review-card blockquote {
+  margin: 0;
+}
+
+.review-card blockquote p {
+  margin: 0;
+  color: var(--text-dark);
+  line-height: 1.7;
+}
+
+.review-card-stars {
+  margin: 0;
+  color: var(--accent-dark);
+  letter-spacing: 0.12em;
+}
+
+.review-card-meta {
+  margin: auto 0 0;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.review-card-meta cite {
+  font-style: normal;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+/* Owner's motto on the homepage: big, bold and a little playful, framed
+   by oversized steel quote marks, with "hook you up" highlighted */
+.motto {
+  position: relative;
+  max-width: 720px;
+  margin: 0.75rem auto 0;
+  padding: 1.75rem 1.5rem 0;
+}
+
+.motto::before {
+  content: "\201C";
+  position: absolute;
+  top: -0.6rem;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--steel);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 4.5rem;
+  line-height: 1;
+}
+
+.motto blockquote {
+  margin: 0;
+}
+
+.section .section-heading .motto blockquote p,
+.section .motto blockquote p {
+  margin: 0;
+  color: var(--primary);
+  font-size: clamp(1.35rem, 2.8vw, 1.85rem);
+  font-weight: 800;
+  font-style: italic;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+/* "hook you up": white marker highlight, same as the yellow-section headings */
+.motto .text-highlight {
+  padding: 0 0.22em 0.04em;
+  border-radius: 0.22em;
+  background: #ffffff;
+  color: var(--steel-dark);
+  box-shadow: 0 8px 20px rgba(7, 26, 43, 0.12);
+}
+
+.motto figcaption {
+  margin-top: 0.85rem;
+  color: var(--primary);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.motto figcaption::before {
+  content: "";
+  display: inline-block;
+  width: 24px;
+  height: 2px;
+  margin-right: 0.6rem;
+  vertical-align: middle;
+  background: currentColor;
+}
+
+/* Footer tagline on every page */
+.footer-brand .footer-motto {
+  font-weight: 800;
+  font-style: italic;
 }
 
 /* Review buttons under the quote */
@@ -1648,143 +1832,185 @@ body.nav-open {
 }
 
 /* ----------------------------------------------------------------------
-   SITE FOOTER
+   SITE FOOTER: brand + awards | quick links | contact + payment | hours.
+   Four aligned columns on desktop, two on tablets, one on phones.
    ---------------------------------------------------------------------- */
 footer {
   background: var(--accent);
   color: var(--primary);
 }
 
-.footer-top {
-  width: min(1500px, calc(100% - 2rem));
-  display: grid;
-  grid-template-columns: minmax(190px, 1.2fr) minmax(210px, 0.85fr) minmax(150px, 0.8fr) minmax(190px, 1fr) minmax(100px, 0.55fr) minmax(150px, 0.7fr);
-  gap: 2.5rem 4.5rem;
-  padding: 4rem 0 2rem;
-  align-items: start;
-  justify-content: space-between;
+/* The footer runs a little wider than page content so five columns fit */
+footer .footer-top,
+footer .footer-bottom {
+  width: min(1280px, calc(100% - 3rem));
 }
 
+.footer-top {
+  display: grid;
+  /* Brand column is guaranteed room to breathe; the rest size to content */
+  grid-template-columns: minmax(300px, 1fr) auto auto auto auto;
+  gap: 2.5rem clamp(1.5rem, 3vw, 2.5rem);
+  padding: 4.5rem 0 3rem;
+  align-items: start;
+}
+
+.footer-top > div {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-width: 0;
+}
+
+/* Column titles: small caps with a short navy rule */
 .footer-top h3 {
-  margin-top: 0;
-  margin-bottom: 1rem;
-  font-size: 0.95rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
+  width: fit-content;
+  margin: 0;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--primary);
 }
 
+.footer-top h3::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 3px;
+  margin-top: 0.6rem;
+  border-radius: 999px;
+  background: var(--primary);
+}
+
+.footer-top h3.footer-subhead {
+  margin-top: 0.75rem;
+}
+
 .footer-brand {
-  max-width: 360px;
-  align-items: center;
-  text-align: center;
-  margin: 0 auto;
+  align-items: flex-start;
+}
+
+.footer-logo {
+  width: 200px;
+  height: auto;
+  display: block;
 }
 
 .footer-brand p {
   margin: 0;
-  color: var(--primary);
-  line-height: 1.6;
-}
-
-.footer-links-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(max-content, 1fr));
-  gap: 0.9rem 1.5rem;
-}
-
-.footer-links-list li {
-  margin: 0;
-}
-
-.footer-links-list a {
-  color: var(--primary);
-  text-decoration: none;
-  transition: color 0.2s ease, text-shadow 0.2s ease;
-}
-
-.footer-links-list a:hover,
-.footer-links-list a:focus {
-  color: #041826;
-  text-decoration: underline;
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.85), 0 0 22px rgba(255, 255, 255, 0.5);
-}
-
-.footer-logo {
-  width: 256px;
-  height: auto;
-  display: block;
-  margin-bottom: -0.5rem;
-  background: transparent;
-  padding: 0;
+  max-width: 38ch;
+  line-height: 1.7;
 }
 
 .footer-brand .cta-button {
-  padding: 0.6rem 1.25rem;
-  font-size: 0.95rem;
-  border-radius: 999px;
-  box-shadow: 0 8px 20px rgba(7, 26, 43, 0.18);
+  padding: 0.7rem 1.4rem;
   background-color: var(--primary);
   color: var(--accent);
-  align-self: center;
-  transition: transform 0.25s ease, box-shadow 0.35s ease;
+  box-shadow: 0 8px 20px rgba(7, 26, 43, 0.18);
 }
 
 .footer-brand .cta-button:hover,
 .footer-brand .cta-button:focus-visible {
   transform: translateY(-2px);
-  box-shadow:
-    0 0 0 3px rgba(255, 208, 90, 0.45),
-    0 0 18px 3px rgba(255, 208, 90, 0.55),
-    0 12px 30px rgba(7, 26, 43, 0.3);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5), 0 12px 28px rgba(7, 26, 43, 0.28);
 }
 
-.footer-contact,
-.footer-hours,
-.footer-links,
-.footer-brand,
-.footer-payment {
+/* Awards column (far right): Best of Florida ribbons on one row,
+   Chamber of Commerce seal on the row below */
+.footer-awards-ribbons,
+.footer-awards-chamber {
   display: flex;
-  flex-direction: column;
-  gap: 1rem;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 228px;
+  max-width: 100%;
 }
 
-.footer-awards {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.85rem;
-  width: 100%;
-}
-
-.footer-badge-ribbons {
-  flex-wrap: nowrap;
+.footer-awards-chamber {
   justify-content: center;
 }
 
-.footer-badge-ribbons img {
+.footer-awards-ribbons img {
   height: 100px;
-}
-
-.footer-chamber-badge {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-}
-
-.footer-chamber-badge img {
-  height: 90px;
   width: auto;
+}
+
+.footer-awards-chamber {
+  margin-top: 0.25rem;
+}
+
+.footer-awards-chamber img {
+  height: 108px;
+  width: auto;
+}
+
+.footer-links-list,
+.footer-contact-list,
+.footer-hours-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+}
+
+.footer-links-list {
+  gap: 0.7rem;
+}
+
+.footer-links-list a,
+.footer-contact-list a,
+.footer-bottom a {
+  color: var(--primary);
+  text-underline-offset: 3px;
+}
+
+.footer-links-list a {
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.footer-links-list a:hover,
+.footer-links-list a:focus-visible,
+.footer-contact-list a:hover,
+.footer-contact-list a:focus-visible,
+.footer-bottom a:hover,
+.footer-bottom a:focus-visible {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+}
+
+.footer-contact-list {
+  gap: 0.85rem;
+}
+
+.footer-contact-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  overflow-wrap: anywhere;
+}
+
+.footer-contact-icon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: var(--primary);
+  color: var(--accent);
+}
+
+.footer-contact-icon svg {
+  width: 16px;
+  height: 16px;
 }
 
 .footer-payment-icons {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.6rem;
+  gap: 0.5rem;
   align-items: center;
 }
 
@@ -1792,140 +2018,144 @@ footer {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  height: 42px;
-  padding: 0.5rem 0.7rem;
+  height: 38px;
+  padding: 0.4rem 0.6rem;
   background: #ffffff;
   border-radius: 8px;
 }
 
 .payment-icon img {
-  height: 26px;
+  height: 22px;
   width: auto;
   display: block;
 }
 
-.footer-contact-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  gap: 1rem;
-}
-
-.footer-contact-list li {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  color: var(--primary);
-  font-size: 0.98rem;
-}
-
-.footer-contact-list a {
-  color: #041826;
-  transition: color 0.2s ease, text-shadow 0.2s ease;
-}
-
-.footer-contact-list a:hover,
-.footer-contact-list a:focus {
-  text-decoration: underline;
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.85), 0 0 22px rgba(255, 255, 255, 0.5);
-}
-
-.footer-contact-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: auto;
-  height: auto;
-  border-radius: 0;
-  background: transparent;
-  color: var(--primary);
-  font-size: 1rem;
-}
-
-.footer-hours-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  gap: 0.5rem;
-}
-
+/* Hours: day on the left, time on the right, divided rows */
 .footer-hours-list li {
   display: flex;
   justify-content: space-between;
-  gap: 0.75rem;
-  color: var(--primary);
-  font-size: 0.92rem;
-  white-space: nowrap;
+  gap: 1rem;
+  padding: 0.45rem 0;
+  border-bottom: 1px solid rgba(7, 26, 43, 0.12);
+  font-size: 0.95rem;
+}
+
+.footer-hours-list li:last-child {
+  border-bottom: none;
 }
 
 .footer-hours-list li span:first-child {
   font-weight: 700;
 }
 
+.footer-hours-list li span {
+  white-space: nowrap;
+}
+
 .footer-bottom {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-between;
+  gap: 0.5rem 2rem;
+  width: min(1120px, calc(100% - 3rem));
+  margin: 0 auto;
+  padding: 1.25rem 0 1.75rem;
+  border-top: 1px solid rgba(7, 26, 43, 0.18);
+  font-size: 0.9rem;
+}
+
+.footer-bottom p {
+  margin: 0;
+}
+
+/* Contact, Hours and Awards are centred in their columns: titles and
+   their rules centre, and each list sits as a centred block (rows inside
+   keep their own left/right alignment so icons and times still line up) */
+.footer-contact,
+.footer-hours,
+.footer-awards {
   align-items: center;
-  gap: 0.75rem 6rem;
-  padding: 1.5rem 0 2rem;
   text-align: center;
-  border-top: 1px solid rgba(7, 26, 43, 0.15);
-  color: var(--primary);
 }
 
-.footer-bottom a {
-  color: var(--primary);
-  text-decoration: underline;
-  text-underline-offset: 2px;
-  transition: color 0.2s ease, text-shadow 0.2s ease;
+.footer-contact-list,
+.footer-hours-list {
+  width: fit-content;
+  max-width: 100%;
+  text-align: left;
 }
 
-.footer-bottom a:hover,
-.footer-bottom a:focus {
-  color: #041826;
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.85), 0 0 22px rgba(255, 255, 255, 0.5);
+.footer-hours-list {
+  min-width: 200px;
 }
 
-/* Tablet: stack footer columns */
-@media (max-width:1400px) {
+.footer-payment-icons {
+  justify-content: center;
+}
+
+/* Below ~1380px five columns would squeeze the brand column, so the brand
+   block spans the top and the four columns sit beneath */
+@media (max-width:1379px) {
+  .footer-top {
+    grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr) minmax(0, 1fr) auto;
+  }
+
+  .footer-brand {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Tablets: brand across the top, then links | contact, hours | awards */
+@media (max-width:1023px) {
+  .footer-top {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .footer-brand {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Phones: one column, generous tap targets, centred bottom line */
+@media (max-width:767px) {
   .footer-top {
     grid-template-columns: 1fr;
+    gap: 2.25rem;
+    padding: 3.25rem 0 2.25rem;
   }
 
-  /* Size the two link columns to their text and center the pair, instead of
-     stretching them to the far edges of the stacked footer */
-  .footer-links-list {
-    grid-template-columns: repeat(2, max-content);
-    justify-content: center;
-    column-gap: 3rem;
-  }
-
-  .footer-payment-icons {
-    justify-content: center;
-  }
-
-  .footer-badge-ribbons {
-    justify-content: center;
-  }
-
-  .footer-top,
-  .footer-bottom {
+  /* Phones: every column centred, so the stacked footer reads as one */
+  .footer-brand,
+  .footer-links {
+    align-items: center;
     text-align: center;
   }
 
-  .footer-contact-list li,
-  .footer-hours-list li {
-    justify-content: center;
+  .footer-brand p {
+    margin-left: auto;
+    margin-right: auto;
   }
-}
 
-/* Small phones: tighter footer spacing */
-@media (max-width:520px) {
-  .footer-top {
-    gap: 1.5rem;
+  .footer-brand .cta-button {
+    align-self: center;
+  }
+
+  .footer-links-list {
+    grid-template-columns: repeat(2, max-content);
+    justify-content: center;
+    column-gap: 2.5rem;
+  }
+
+  .footer-links-list a,
+  .footer-contact-list a {
+    display: inline-block;
+    padding: 0.35rem 0;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
   }
 }
 
@@ -2104,8 +2334,7 @@ footer {
   }
 
   .service-card,
-  .testimonials-panel,
-  .footer-top {
+  .testimonials-panel {
     border-radius: 20px;
   }
 
@@ -2152,7 +2381,11 @@ footer {
     width: 52px;
     height: 52px;
     margin: 0;
-    font-size: 1.4rem;
+  }
+
+  .service-card-icon svg {
+    width: 24px;
+    height: 24px;
   }
 
   .service-card h3 {
@@ -2279,45 +2512,9 @@ footer {
   }
 }
 
-/* Mobile: center the footer */
+/* Mobile: CTA buttons centre in their stacked columns */
 @media (max-width:768px) {
-  .footer-top {
-    grid-template-columns: 1fr;
-    padding: 2rem 0;
-    text-align: center;
-  }
-
-  .footer-top > div {
-    align-items: center;
-  }
-
-  .footer-logo {
-    margin: 0 auto;
-    max-width: 220px;
-    height: auto;
-  }
-
-  .footer-contact-list,
-  .footer-hours-list,
-  .footer-links-list {
-    justify-items: center;
-  }
-
-  .footer-contact-list li,
-  .footer-hours-list li {
-    justify-content: center;
-  }
-
-  .footer-bottom {
-    padding: 1rem 0 2rem;
-  }
-
-  .footer-bottom p {
-    margin: 0.25rem 0;
-  }
-
-  .cta-button,
-  .footer-brand .cta-button {
+  .cta-button {
     align-self: center;
   }
 }
@@ -2399,8 +2596,7 @@ footer {
     min-height: 600px;
   }
 
-  .hero-media,
-  .page-hero-media {
+  .hero-media {
     width: min(100%, 420px);
     margin-left: auto;
     margin-right: auto;
@@ -2410,23 +2606,20 @@ footer {
     max-height: 230px;
   }
 
-  .hero-collage {
-    aspect-ratio: 16 / 10;
-  }
-
-  .hero-collage img {
-    width: 58%;
+  /* Inner-page banner collages are decorative; stacked above the text they
+     made those banners far taller than the rest, so the text carries it */
+  .page-hero-media {
+    display: none;
   }
 }
 
 @media (max-width: 520px) {
   .hero,
   .page-hero {
-    min-height: 640px;
+    min-height: 720px;
   }
 
-  .hero-media,
-  .page-hero-media {
+  .hero-media {
     width: min(100%, 320px);
   }
 
@@ -2440,6 +2633,9 @@ footer {
   z-index: 2;
   display: grid;
   gap: 1.25rem;
+}
+
+.page-hero-content:not(.has-media) > * {
   max-width: 46rem;
 }
 
@@ -2474,17 +2670,18 @@ footer {
 
 .about-collage {
   position: relative;
-  aspect-ratio: 4/5;
+  aspect-ratio: 1/1;
 }
 
 .about-collage-photo {
   position: absolute;
   top: 0;
   left: 0;
-  width: 86%;
-  height: 90%;
+  /* Wide frame across the top: the trucks and cars sit high and large,
+     clear of the portrait tucked into the bottom right */
+  width: 92%;
+  height: 74%;
   object-fit: cover;
-  /* Keep the left truck in frame; the portrait overlaps the bottom right */
   object-position: left center;
   border-radius: 28px;
   box-shadow: 0 25px 55px rgba(7, 26, 43, 0.25);
@@ -2495,7 +2692,7 @@ footer {
   right: 0;
   bottom: 0;
   z-index: 2;
-  width: 62%;
+  width: 48%;
   aspect-ratio: 1/1;
   object-fit: cover;
   border-radius: 20px;
@@ -2607,6 +2804,8 @@ footer {
 .feature-list:has(> li:last-child:nth-child(odd)) {
   grid-template-columns: 1fr;
   max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Centered sections: keep the single column centered under the heading */
@@ -2691,21 +2890,19 @@ footer {
   box-shadow: 0 0 0 3px rgba(255, 208, 90, 0.45), 0 0 14px rgba(255, 208, 90, 0.45);
 }
 
-/* On yellow sections: darker dividers, navy-to-white hover line */
+/* On yellow sections the list sits in a white panel, like the steps and areas */
 .section:not(.section-light) .feature-list {
-  border-top-color: rgba(7, 26, 43, 0.18);
+  padding: 0.5rem clamp(1.5rem, 4vw, 2.75rem);
+  border-radius: var(--radius-card);
+  background: #ffffff;
+  border-top: 5px solid var(--steel);
+  box-shadow: 0 0 0 1px rgba(7, 26, 43, 0.05), 0 22px 48px rgba(7, 26, 43, 0.14);
 }
 
-.section:not(.section-light) .feature-list li {
-  border-bottom-color: rgba(7, 26, 43, 0.18);
-}
-
-.section:not(.section-light) .feature-list li::after {
-  background: linear-gradient(90deg, var(--primary), var(--steel));
-}
-
-.section:not(.section-light) .feature-list li:hover::before {
-  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.7), 0 0 14px rgba(255, 255, 255, 0.6);
+/* No divider under the last row inside the panel */
+.section:not(.section-light) .feature-list li:last-child,
+.section:not(.section-light) .feature-list:not(:has(> li:last-child:nth-child(odd))) li:nth-last-child(2) {
+  border-bottom: none;
 }
 
 .steps-list {
@@ -2743,16 +2940,16 @@ footer {
 
 /* Yellow sections: all steps share one white panel. Rows are split by thin
    lines and a steel connector runs down through the numbered badges */
-.section:not(.section-light) .steps-list {
+.section .steps-list {
   gap: 0;
   padding: 0.75rem clamp(1.5rem, 4vw, 2.75rem);
-  border-radius: 22px;
+  border-radius: var(--radius-card);
   background: #ffffff;
   border-top: 5px solid var(--steel);
   box-shadow: 0 0 0 1px rgba(7, 26, 43, 0.05), 0 22px 48px rgba(7, 26, 43, 0.14);
 }
 
-.section:not(.section-light) .steps-list li {
+.section .steps-list li {
   position: relative;
   align-items: center;
   gap: 1.5rem;
@@ -2760,12 +2957,12 @@ footer {
   border-bottom: 1px solid rgba(7, 26, 43, 0.1);
 }
 
-.section:not(.section-light) .steps-list li:last-child {
+.section .steps-list li:last-child {
   border-bottom: none;
 }
 
 /* Connector line: from badge center to badge center */
-.section:not(.section-light) .steps-list li::before {
+.section .steps-list li::before {
   content: "";
   position: absolute;
   left: calc(1.5rem - 1px);
@@ -2775,15 +2972,17 @@ footer {
   background: rgba(71, 109, 151, 0.35);
 }
 
-.section:not(.section-light) .steps-list li:first-child::before {
+.section .steps-list li:first-child::before {
   top: 50%;
 }
 
-.section:not(.section-light) .steps-list li:last-child::before {
+.section .steps-list li:last-child::before {
   bottom: 50%;
 }
 
-.section:not(.section-light) .steps-list .step-number {
+.section .steps-list .step-number {
+  background: var(--primary);
+  color: var(--accent);
   position: relative;
   z-index: 1;
   width: 3rem;
@@ -2794,25 +2993,25 @@ footer {
   transition: box-shadow 0.25s ease;
 }
 
-.section:not(.section-light) .steps-list li:hover .step-number {
+.section .steps-list li:hover .step-number {
   box-shadow: 0 0 0 5px #ffffff, 0 0 0 7px rgba(255, 208, 90, 0.9), 0 0 18px rgba(255, 208, 90, 0.6);
 }
 
-.section:not(.section-light) .steps-list h3 {
+.section .steps-list h3 {
   transition: color 0.2s ease;
 }
 
-.section:not(.section-light) .steps-list li:hover h3 {
+.section .steps-list li:hover h3 {
   /* Deep gold: readable on white, contrasts with the navy badge */
-  color: var(--accent-dark, #b8860b);
+  color: var(--gold-text);
 }
 
 /* Hovered row gets a soft yellow wash fading out to the right */
-.section:not(.section-light) .steps-list li {
+.section .steps-list li {
   transition: background-color 0.25s ease;
 }
 
-.section:not(.section-light) .steps-list li:hover {
+.section .steps-list li:hover {
   background: linear-gradient(90deg, rgba(255, 208, 90, 0.22), rgba(255, 208, 90, 0) 75%);
 }
 
@@ -2826,7 +3025,7 @@ footer {
 
 .steps-list h3 {
   margin: 0 0 0.35rem;
-  font-size: 1.1rem;
+  font-size: 1.15rem;
 }
 
 .steps-list p {
@@ -2834,16 +3033,32 @@ footer {
   color: var(--muted);
 }
 
+/* FAQ: one white panel, questions separated by divider lines */
 .faq-list {
   display: grid;
-  gap: 1.25rem;
+  padding: 0.5rem clamp(1.5rem, 4vw, 2.75rem);
+  border-radius: var(--radius-card);
+  background: #ffffff;
+  border-top: 5px solid var(--steel);
+  box-shadow: 0 0 0 1px rgba(7, 26, 43, 0.05), 0 22px 48px rgba(7, 26, 43, 0.14);
+  text-align: left;
 }
 
 .faq-list details {
-  background: var(--surface);
-  border: 1px solid rgba(16, 35, 58, 0.08);
-  border-radius: 14px;
-  padding: 1.35rem 1.5rem;
+  padding: 1.35rem 0;
+  border-bottom: 1px solid rgba(7, 26, 43, 0.1);
+}
+
+.faq-list details:last-child {
+  border-bottom: none;
+}
+
+.faq-list summary {
+  transition: color 0.2s ease;
+}
+
+.faq-list summary:hover {
+  color: var(--gold-text);
 }
 
 .faq-list summary {
@@ -2995,3 +3210,198 @@ footer {
   }
 }
 
+
+/* ----------------------------------------------------------------------
+   ACCESSIBILITY: screen-reader text, visible keyboard focus, reduced motion
+   ---------------------------------------------------------------------- */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Every interactive element gets a clear ring when reached by keyboard */
+:where(a, button, summary, [tabindex]):focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* On dark backgrounds the ring switches to brand yellow */
+:where(.hero, .page-hero, .testimonials-panel, .tow-cta-wrap, .cta-banner, .lightbox-modal, .mobile-call-bar) :focus-visible,
+.mobile-call-bar:focus-visible,
+.main-nav .nav-links a.nav-cta-button:focus-visible {
+  outline-color: var(--accent);
+}
+
+/* City rows: ring the whole row */
+.areas-grid li:has(a:focus-visible) {
+  outline: var(--focus-ring);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+.areas-grid li a:focus-visible {
+  outline: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ----------------------------------------------------------------------
+   STICKY MOBILE CALL BUTTON (phones only)
+   Floats above the page bottom once you scroll past the banner; hidden
+   over the banner and footer (both have their own call buttons) and while
+   the menu or lightbox is open.
+   ---------------------------------------------------------------------- */
+.mobile-call-bar {
+  display: none;
+}
+
+@media (max-width:767px) {
+  .mobile-call-bar {
+    position: fixed;
+    z-index: 900;
+    left: 12px;
+    right: 12px;
+    bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    min-height: 52px;
+    padding: 0.75rem 1.25rem;
+    border-radius: 999px;
+    background: var(--primary);
+    color: var(--accent);
+    font-weight: 800;
+    font-size: 1.05rem;
+    text-decoration: none;
+    box-shadow: 0 0 0 3px rgba(255, 208, 90, 0.35), 0 14px 30px rgba(7, 26, 43, 0.35);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  .mobile-call-bar svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .mobile-call-number {
+    color: #ffffff;
+    font-weight: 700;
+  }
+
+  .mobile-call-bar.is-hidden,
+  body.nav-open .mobile-call-bar,
+  body.lightbox-open .mobile-call-bar {
+    transform: translateY(calc(100% + 24px));
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+/* Very small phones (320-400px): let highlighted phrases and the "featured"
+   pill wrap instead of pushing past the screen edge */
+@media (max-width:400px) {
+  .text-highlight,
+  .award-feature-label span {
+    white-space: normal;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+  }
+
+  .award-feature-label::before,
+  .award-feature-label::after {
+    display: none;
+  }
+
+  .award-feature-label {
+    justify-content: center;
+  }
+}
+
+/* Keep a phrase and its trailing punctuation on one line */
+.nowrap {
+  white-space: nowrap;
+}
+
+/* Footer credit: "Promontory Web Designs" in the Best of Florida ribbon blue
+   (5.6:1 on the yellow footer), with a soft glow on hover */
+.footer-bottom a[href*="promontorywebdesigns"] {
+  color: #0a5494;
+  font-weight: 700;
+  text-decoration: none;
+  transition: text-shadow 0.3s ease, color 0.2s ease;
+}
+
+.footer-bottom a[href*="promontorywebdesigns"]:hover,
+.footer-bottom a[href*="promontorywebdesigns"]:focus-visible {
+  color: #0a5494;
+  text-decoration: none;
+  text-shadow:
+    0 0 10px rgba(255, 255, 255, 0.95),
+    0 0 18px rgba(255, 255, 255, 0.75),
+    0 0 26px rgba(10, 84, 148, 0.45);
+}
+
+/* Compact, centred banner (About page): just an eyebrow and a short headline,
+   so it hugs its content instead of using the shared banner height */
+.page-hero.page-hero-compact {
+  min-height: 0;
+  padding: 6rem 0 7rem;
+}
+
+/* The section right under the compact banner starts close to the wave,
+   so the story reads as continuing from the banner */
+.page-hero-compact + .section {
+  padding-top: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.page-hero-compact .page-hero-content {
+  justify-items: center;
+  gap: 0.85rem;
+  text-align: center;
+}
+
+.page-hero-compact .page-hero-content > * {
+  max-width: 44rem;
+}
+
+.page-hero-compact h1 {
+  text-wrap: balance;
+}
+
+@media (max-width:767px) {
+  .page-hero.page-hero-compact {
+    padding: 4.5rem 0 5.5rem;
+  }
+}
+
+/* Homepage: the first section starts closer to the banner's wave, so the
+   awards heading sits nearer the top instead of floating in white space */
+.hero + .section {
+  padding-top: clamp(2.5rem, 5vw, 4rem);
+}
+
+/* Compact banners with buttons (service-area pages): centre the button pair */
+.page-hero-compact .hero-actions {
+  justify-content: center;
+}
