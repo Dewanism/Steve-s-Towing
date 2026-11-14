@@ -8,24 +8,24 @@ Static HTML/CSS/JS — no framework, no build step, no dependencies. Every page 
 
 ```
 index.html              Homepage (hero, awards, services overview, service areas, testimonials, CTA)
-aboutus.html            Company story, history, awards
+about.html            Company story, history, awards
 services.html           Services overview / hub page
 contact.html            Contact form (currently a bare unstyled stub — see Known issues)
 
 services/               One page per service, linked from the nav dropdown
-  1towing.html
-  2cashforjunk.html
-  3lockouts.html
-  4privatepropertytowing.html
-  5shedandtoolbox.html
-  6roadsideassistance.html
+  towing.html
+  cash-for-junk-cars.html
+  lockouts.html
+  private-property-towing.html
+  shed-and-toolbox-transport.html
+  roadside-assistance.html
 
-serviceareas/            One page per service area, linked from the nav dropdown
-  1puntagorda.html
-  2portcharlotte.html
-  3northport.html
-  4englewood.html
-  5venice.html
+service-areas/            One page per service area, linked from the nav dropdown
+  punta-gorda.html
+  port-charlotte.html
+  north-port.html
+  englewood.html
+  venice.html
 
 css/style.css            Single shared stylesheet, organized into commented sections
                          (reset -> tokens -> base -> header/nav -> homepage sections ->
@@ -57,7 +57,7 @@ Hosted on GitHub Pages, served from `main`. Note: GitHub Pages sets its own `Cac
 ## Known issues
 
 - **`contact.html`** has no styling, header, nav, or footer, and its `<form>` has no `action`/backend — it's an unfinished stub, not a live contact page.
-- **`serviceareas/1puntagorda.html`, `2portcharlotte.html`, `3northport.html`** each reference a local photo (`punta-gorda.jpg`, `port-charlotte.jpg`, `north-port.jpg`) that was never added to `img/` — those images currently render broken.
+- **`service-areas/punta-gorda.html`, `port-charlotte.html`, `north-port.html`** each reference a local photo (`punta-gorda.jpg`, `port-charlotte.jpg`, `north-port.jpg`) that was never added to `img/` — those images currently render broken.
 - **`js/navigation.js`** is dead code from an earlier prototype (targets a `.hamburger` class that no longer exists) and isn't linked from any page; `js/main.js` is what actually runs.
 - **`icons/`** and **`src/`** are empty directories left over from initial scaffolding.
 

@@ -3488,3 +3488,193 @@ figure.page-hero-media {
 .hero h1:has(.text-highlight) {
   line-height: 1.32;
 }
+
+/* ----------------------------------------------------------------------
+   FOOTER POLISH
+   ---------------------------------------------------------------------- */
+
+/* Link hover: the header's navy pill with yellow text. Padding is cancelled
+   by a negative margin so the pill grows around the text without moving it */
+.footer-links-list a,
+.footer-contact-list a {
+  display: inline-block;
+  padding: 0.3rem 0.75rem;
+  margin: -0.3rem -0.75rem;
+  border-radius: 999px;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.footer-links-list a:hover,
+.footer-links-list a:focus-visible,
+.footer-contact-list a:hover,
+.footer-contact-list a:focus-visible {
+  background-color: var(--primary);
+  color: var(--accent);
+  text-decoration: none;
+}
+
+/* Payment cards: one tidy row */
+.footer-payment-icons {
+  flex-wrap: nowrap;
+  gap: 0.4rem;
+}
+
+.footer-payment-icons .payment-icon {
+  height: 36px;
+  padding: 0.35rem 0.5rem;
+}
+
+/* Hours: styled like the Contact rows beside it - a navy clock badge,
+   then the days (small caps) over the time */
+.footer-hours-list {
+  min-width: 0;
+}
+
+.footer-hours-list li {
+  display: grid;
+  grid-template-columns: 2rem auto;
+  grid-template-rows: auto auto;
+  column-gap: 0.65rem;
+  row-gap: 0.1rem;
+  align-items: center;
+  padding: 0;
+  border: 0;
+  text-align: left;
+}
+
+.footer-hours-list li::before {
+  content: "";
+  grid-row: 1 / 3;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: var(--primary) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffd05a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpath d='M12 6v6l4 2'/%3E%3C/svg%3E") center / 16px no-repeat;
+}
+
+.footer-hours-list li span:first-child {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--steel-dark);
+}
+
+.footer-hours-list li span:last-child {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+/* Contact rows: a little more room after each icon so the hover pill
+   doesn't touch the icon badge */
+.footer-contact-list li {
+  gap: 0.95rem;
+}
+
+.footer-contact-list a {
+  padding: 0.3rem 0.5rem;
+  margin: -0.3rem -0.5rem;
+}
+
+/* Hours as the last Contact row: days (small caps) over the time */
+.footer-hours-text {
+  display: grid;
+  gap: 0.05rem;
+  line-height: 1.25;
+}
+
+.footer-hours-days {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--steel-dark);
+}
+
+.footer-hours-time {
+  font-weight: 700;
+}
+
+/* "We Accept" column: centred like Contact and Awards, cards in a 2x2 grid */
+.footer-payment {
+  align-items: center;
+  text-align: center;
+}
+
+.footer-payment .footer-payment-icons {
+  display: grid;
+  grid-template-columns: repeat(2, 84px);
+  gap: 0.6rem;
+}
+
+.footer-payment .payment-icon {
+  width: 100%;
+  height: 46px;
+  padding: 0.4rem;
+  border-radius: 10px;
+  box-shadow: 0 6px 16px rgba(7, 26, 43, 0.08);
+}
+
+.footer-payment .payment-icon img {
+  height: 26px;
+}
+
+/* Amex / Discover artwork sits small inside its square file; scale it up
+   so all four cards read at a similar size */
+.footer-payment .payment-icon img[alt="American Express"],
+.footer-payment .payment-icon img[alt="Discover"] {
+  height: 34px;
+}
+
+/* Call Now pills (header + footer): hover turns steel blue with white text,
+   matching the "224+ Verified Reviews" tile, with its soft blue glow */
+.main-nav .nav-links a.nav-cta-button:hover,
+.main-nav .nav-links a.nav-cta-button:focus-visible,
+.footer-brand .cta-button:hover,
+.footer-brand .cta-button:focus-visible {
+  background-color: var(--steel);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow:
+    0 0 0 3px rgba(71, 109, 151, 0.35),
+    0 0 22px rgba(120, 165, 215, 0.5),
+    0 12px 28px rgba(7, 26, 43, 0.25);
+}
+
+/* Hours row reads on one line like the other Contact rows: "Monday–Sunday: 8AM–12AM" */
+.footer-hours-text {
+  display: inline;
+  line-height: inherit;
+}
+
+.footer-hours-days {
+  font-size: inherit;
+  font-weight: inherit;
+  letter-spacing: 0;
+  text-transform: none;
+  color: inherit;
+}
+
+.footer-hours-days::after {
+  content: ":";
+}
+
+.footer-hours-time {
+  font-weight: inherit;
+}
+
+/* Hours row: days in bold steel blue, hours in navy */
+.footer-hours-days {
+  font-weight: 700;
+  color: var(--steel-dark);
+}
+
+.footer-hours-time {
+  margin-left: 0.15rem;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.footer-hours-text {
+  white-space: nowrap;
+}
